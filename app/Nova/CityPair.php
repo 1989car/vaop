@@ -2,56 +2,50 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
-class VirtualAirline extends Resource
+class CityPair extends Resource
 {
-    public static $group = 'Virtual Airlines';
-    public static $model = 'App\Models\VirtualAirline';
-    public static $title = 'name';
+    public static $group = 'Schedules';
+    public static $model = 'App\Models\CityPair';
+    public static $title = 'id';
     public static $search = [
-        'name',
     ];
     
-    public static function label() {
-        return 'Virtual Airlines';
-    }
-
     public function fields(Request $request)
     {
         return [
+            BelongsTo::make('VirtualAirline')->searchable(),
+            
             ID::make()->sortable(),
-    
-            Text::make('Name')
-                ->sortable()
-                ->rules('required', 'max:255'),
-    
-            HasMany::make('AirlineBrands'),
             
-            HasMany::make('Achievements'),
+            BelongsTo::make('Origin', 'origin', 'App\Nova\Airport')->searchable(),
+    
+            BelongsTo::make('Destination', 'destination' ,'App\Nova\Airport')->searchable(),
             
-            HasMany::make('Badges'),
+            HasMany::make('Timetables'),
         ];
     }
-
+    
     public function cards(Request $request)
     {
         return [];
     }
-
+    
     public function filters(Request $request)
     {
         return [];
     }
-
+    
     public function lenses(Request $request)
     {
         return [];
     }
-
+    
     public function actions(Request $request)
     {
         return [];

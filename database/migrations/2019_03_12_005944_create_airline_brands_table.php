@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateAirlineBrandsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('airline_brands', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('virtualairline_id');
             $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('avatar_url');
-            $table->rememberToken();
+            $table->string('logo_url');
+            $table->string('icon_url');
             $table->timestamps();
             $table->softDeletes();
+            
+            $table->index('virtualairline_id');
         });
     }
 
@@ -33,6 +33,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('airline_brands');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateCityPairsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,17 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('city_pairs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('avatar_url');
-            $table->rememberToken();
+            $table->bigInteger('virtualairline_id');
+            $table->bigInteger('origin_airport_id');
+            $table->bigInteger('destination_airport_id');
             $table->timestamps();
             $table->softDeletes();
+    
+            $table->index('virtualairline_id');
+            $table->index('origin_airport_id');
+            $table->index('destination_airport_id');
         });
     }
 
@@ -33,6 +34,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('city_pairs');
     }
 }
