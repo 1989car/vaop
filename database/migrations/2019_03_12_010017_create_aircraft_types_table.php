@@ -24,7 +24,7 @@ class CreateAircraftTypesTable extends Migration
             $table->timestamps();
             $table->softDeletes();
             
-            $table->index('manufactuer_id');
+            $table->index('manufacturer_id');
         });
     }
 

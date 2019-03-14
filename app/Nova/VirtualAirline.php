@@ -7,6 +7,7 @@ use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class VirtualAirline extends Resource
 {
@@ -19,6 +20,11 @@ class VirtualAirline extends Resource
     
     public static function label() {
         return 'Virtual Airlines';
+    }
+    
+    public static function indexQuery(NovaRequest $request, $query)
+    {
+        return $query->whereIn('id', auth()->user()->va_role_ids());
     }
 
     public function fields(Request $request)

@@ -21,6 +21,7 @@ class CreateBadgesTable extends Migration
             $table->string('icon_url')->nullable();
             $table->longText('dql')->nullable();
             $table->timestamps();
+            $table->softDeletes();
             
             $table->index('virtualairline_id');
         });

@@ -22,11 +22,16 @@ class AirlineBrand extends Resource
     public static function label() {
         return 'Brands';
     }
+    
+    public static function indexQuery(NovaRequest $request, $query)
+    {
+        return $query->whereIn('virtualairline_id', auth()->user()->va_role_ids());
+    }
 
     public function fields(Request $request)
     {
         return [
-            BelongsTo::make('VirtualAirline')->searchable(),
+            BelongsTo::make('VirtualAirline'),
             
             ID::make()->sortable(),
     

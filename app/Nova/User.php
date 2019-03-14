@@ -50,9 +50,7 @@ class User extends Resource
     
             BelongsToMany::make('Badges')->searchable(),
     
-            MorphToMany::make('Roles', 'roles', \Insenseanalytics\LaravelNovaPermission\Role::class),
-            
-            MorphToMany::make('Permissions', 'permissions', \Insenseanalytics\LaravelNovaPermission\Permission::class),
+            MorphToMany::make('Roles'),
         ];
     }
 

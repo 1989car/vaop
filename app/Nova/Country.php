@@ -22,7 +22,7 @@ class Country extends Resource
     public function fields(Request $request)
     {
         return [
-            BelongsTo::make('Continent')->searchable(),
+            BelongsTo::make('Continent'),
             
             ID::make()->sortable(),
             

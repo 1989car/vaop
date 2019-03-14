@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Hyn\Tenancy\Traits\UsesTenantConnection;
-use Spatie\Permission\Models\Role as SpatieRole;
-
-class Role extends SpatieRole
+class Role extends \Spatie\Permission\Models\Role
 {
-    use UsesTenantConnection;
+    function virtualairline()
+    {
+        return $this->belongsTo('App\Models\VirtualAirline','virtualairline_id','id');
+    }
 }

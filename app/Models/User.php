@@ -37,4 +37,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Models\Badge', 'user_badges','user_id','badge_id');
     }
+    
+    function va_role_ids()
+    {
+        $roles = $this->roles;
+        $va_ids = [];
+        foreach($roles as $role){
+            $va_ids[] = $role->virtualairline_id;
+        }
+        return $va_ids;
+    }
 }
