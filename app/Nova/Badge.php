@@ -35,7 +35,8 @@ class Badge extends Resource
             Textarea::make('Description')
                 ->sortable(),
     
-            Image::make('Icon', 'icon_url'),
+            Image::make('Icon', 'icon_url')
+                ->disk('uploads'),
     
             Textarea::make('DQL')
                 ->sortable(),

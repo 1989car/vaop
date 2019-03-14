@@ -5,6 +5,7 @@ namespace App\Nova;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\MorphToMany;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\Password;
@@ -48,6 +49,10 @@ class User extends Resource
             BelongsToMany::make('Achievements')->searchable(),
     
             BelongsToMany::make('Badges')->searchable(),
+    
+            MorphToMany::make('Roles', 'roles', \Insenseanalytics\LaravelNovaPermission\Role::class),
+            
+            MorphToMany::make('Permissions', 'permissions', \Insenseanalytics\LaravelNovaPermission\Permission::class),
         ];
     }
 

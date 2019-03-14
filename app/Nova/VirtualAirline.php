@@ -5,6 +5,7 @@ namespace App\Nova;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
 
 class VirtualAirline extends Resource
@@ -28,6 +29,15 @@ class VirtualAirline extends Resource
             Text::make('Name')
                 ->sortable()
                 ->rules('required', 'max:255'),
+    
+            Image::make('Logo', 'logo_url')
+                ->disk('uploads'),
+    
+            Image::make('Icon', 'icon_url')
+                ->disk('uploads'),
+    
+            Image::make('Banner', 'banner_url')
+                ->disk('uploads'),
     
             HasMany::make('AirlineBrands'),
             

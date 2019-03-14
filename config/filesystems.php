@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'cloud' => env('FILESYSTEM_CLOUD', 's3'),
+    'cloud' => env('FILESYSTEM_CLOUD', 'azure'),
 
     /*
     |--------------------------------------------------------------------------
@@ -62,6 +62,13 @@ return [
             'region' => env('AWS_DEFAULT_REGION'),
             'bucket' => env('AWS_BUCKET'),
             'url' => env('AWS_URL'),
+        ],
+        
+        'uploads' => [
+            'driver'    => 'azure',
+            'name'      => 'vaopuploads',
+            'key'       => env('AZURE_STORAGE_KEY'),
+            'container' => env('AZURE_STORAGE_CONTAINER'),
         ],
 
     ],

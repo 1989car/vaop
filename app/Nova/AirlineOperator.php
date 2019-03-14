@@ -54,9 +54,11 @@ class AirlineOperator extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
     
-            Image::make('Logo', 'logo_url'),
+            Image::make('Logo', 'logo_url')
+                ->disk('uploads'),
     
-            Image::make('Icon', 'icon_url'),
+            Image::make('Icon', 'icon_url')
+                ->disk('uploads'),
             
             HasMany::make('Timetables'),
         ];

@@ -67,7 +67,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     public function tools()
     {
-        return [];
+        return [
+            \Insenseanalytics\LaravelNovaPermission\LaravelNovaPermission::make(),
+        ];
     }
 
     /**
