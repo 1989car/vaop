@@ -54,6 +54,8 @@ class PermissionSeeder extends Seeder
             'user:ban',
             'user:unban',
             'user:impersonate',
+            
+            'admin:access',
         ];
         
         foreach($special_permissions as $permission){
