@@ -68,7 +68,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function tools()
     {
         return [
-            //
+            \Vyuldashev\NovaPermission\NovaPermissionTool::make(),
         ];
     }
 

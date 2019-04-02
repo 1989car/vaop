@@ -15,15 +15,12 @@ class CreateAchievementsTable extends Migration
     {
         Schema::create('achievements', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('virtualairline_id');
             $table->string('name');
             $table->longText('description')->nullable();
             $table->string('icon_url')->nullable();
             $table->longText('dql')->nullable();
             $table->timestamps();
             $table->softDeletes();
-    
-            $table->index('virtualairline_id');
         });
         
         Schema::create('user_achievements', function (Blueprint $table) {

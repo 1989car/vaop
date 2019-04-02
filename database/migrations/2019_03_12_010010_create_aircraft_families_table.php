@@ -15,12 +15,9 @@ class CreateAircraftFamiliesTable extends Migration
     {
         Schema::create('aircraft_families', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('virtualairline_id');
             $table->string('name');
             $table->timestamps();
             $table->softDeletes();
-            
-            $table->index('virtualairline_id');
         });
     
         Schema::create('aircraft_family_types', function (Blueprint $table) {

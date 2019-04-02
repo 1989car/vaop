@@ -13,8 +13,23 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
+        'App\Models\Achievement' => 'App\Policies\AchievementPolicy',
         'App\Models\AircraftFamilies' => 'App\Policies\AircraftFamilyPolicy',
-        'App\Models\VirtualAirline' => 'App\Policies\VirtualAirlinePolicy',
+        'App\Models\AircraftManufacturer' => 'App\Policies\AircraftManufacturerPolicy',
+        'App\Models\AircraftType' => 'App\Policies\AircraftTypePolicy',
+        'App\Models\AirlineBrand' => 'App\Policies\AirlineBrandPolicy',
+        'App\Models\AirlineOperator' => 'App\Policies\AirlineOperatorPolicy',
+        'App\Models\Airport' => 'App\Policies\AirportPolicy',
+        'App\Models\Badge' => 'App\Policies\BadgePolicy',
+        'App\Models\CityPair' => 'App\Policies\CityPairPolicy',
+        'App\Models\Continent' => 'App\Policies\ContinentPolicy',
+        'App\Models\Country' => 'App\Policies\CountryPolicy',
+        'App\Models\MetroArea' => 'App\Policies\MetroAreaPolicy',
+        'Spatie\Permission\Models\Role' => 'App\Policies\RolePolicy',
+        'Spatie\Permission\Models\Permission' => 'App\Policies\PermissionPolicy',
+        'App\Models\Subdivision' => 'App\Policies\SubdivisionPolicy',
+        'App\Models\Timetable' => 'App\Policies\TimetablePolicy',
+        'App\Models\User' => 'App\Policies\UserPolicy',
     ];
 
     /**
@@ -26,10 +41,10 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
     
-        // Implicitly grant "Admin" role all permissions
+        // Implicitly grant "SuperAdmin" role all permissions
         // This works in the app by using gate-related functions like auth()->user->can() and @can()
         Gate::before(function ($user, $ability) {
-            return $user->hasRole('global-admin') ? true : null;
+            return $user->hasRole('SuperAdmin') ? true : null;
         });
     }
 }

@@ -16,16 +16,9 @@ class CityPair extends Resource
     public static $search = [
     ];
     
-    public static function indexQuery(NovaRequest $request, $query)
-    {
-        return $query->whereIn('virtualairline_id', auth()->user()->va_role_ids());
-    }
-    
     public function fields(Request $request)
     {
         return [
-            BelongsTo::make('VirtualAirline'),
-            
             ID::make()->sortable(),
             
             BelongsTo::make('Origin', 'origin', 'App\Nova\Airport')->searchable(),

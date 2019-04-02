@@ -15,13 +15,11 @@ class CreateCityPairsTable extends Migration
     {
         Schema::create('city_pairs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('virtualairline_id');
             $table->bigInteger('origin_airport_id');
             $table->bigInteger('destination_airport_id');
             $table->timestamps();
             $table->softDeletes();
     
-            $table->index('virtualairline_id');
             $table->index('origin_airport_id');
             $table->index('destination_airport_id');
         });

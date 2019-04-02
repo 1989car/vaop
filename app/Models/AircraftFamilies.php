@@ -10,7 +10,6 @@ class AircraftFamilies extends Model
     use SoftDeletes;
     
     protected $fillable = [
-        'virtualairline_id',
         'name',
     ];
     
@@ -22,10 +21,5 @@ class AircraftFamilies extends Model
     function timetables()
     {
         return $this->hasMany('App\Model\Timetable','timetable_id','id');
-    }
-    
-    function virtualairline()
-    {
-        return $this->belongsTo('App\Models\VirtualAirline','virtualairline_id','id');
     }
 }

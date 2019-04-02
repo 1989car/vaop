@@ -22,16 +22,9 @@ class Badge extends Resource
         'dql',
     ];
     
-    public static function indexQuery(NovaRequest $request, $query)
-    {
-        return $query->whereIn('virtualairline_id', auth()->user()->va_role_ids());
-    }
-    
     public function fields(Request $request)
     {
         return [
-            BelongsTo::make('VirtualAirline'),
-            
             ID::make()->sortable(),
     
             Text::make('Name')

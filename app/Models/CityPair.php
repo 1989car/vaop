@@ -10,7 +10,6 @@ class CityPair extends Model
     use SoftDeletes;
     
     protected $fillable = [
-        'virtualairline_id',
         'origin_airport_id',
         'destination_airport_id',
     ];
@@ -28,10 +27,5 @@ class CityPair extends Model
     function timetables()
     {
         return $this->hasMany('App\Models\Timetable', 'citypair_id', 'id');
-    }
-    
-    function virtualairline()
-    {
-        return $this->belongsTo('App\Models\VirtualAirline','virtualairline_id','id');
     }
 }

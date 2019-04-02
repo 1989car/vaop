@@ -50,7 +50,7 @@ class User extends Resource
     
             BelongsToMany::make('Badges')->searchable(),
     
-            MorphToMany::make('Roles'),
+            MorphToMany::make('Roles', 'roles', \Vyuldashev\NovaPermission\Role::class),
         ];
     }
 

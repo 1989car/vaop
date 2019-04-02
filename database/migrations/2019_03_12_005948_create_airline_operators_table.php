@@ -15,7 +15,6 @@ class CreateAirlineOperatorsTable extends Migration
     {
         Schema::create('airline_operators', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('virtualairline_id');
             $table->string('country_id');
             $table->string('airlinebrand_id');
             $table->string('name');
@@ -28,7 +27,6 @@ class CreateAirlineOperatorsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
     
-            $table->index('virtualairline_id');
             $table->index('country_id');
             $table->index('airlinebrand_id');
         });

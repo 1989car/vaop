@@ -10,7 +10,6 @@ class AirlineBrand extends Model
     use SoftDeletes;
     
     protected $fillable = [
-        'virtualairline_id',
         'name',
         'logo_url',
         'icon_url',
@@ -19,10 +18,5 @@ class AirlineBrand extends Model
     function airlineoperators()
     {
         return $this->hasMany('App\Models\AirlineOperator','id','airlineoperator_id');
-    }
-    
-    function virtualairline()
-    {
-        return $this->belongsTo('App\Models\VirtualAirline','virtualairline_id','id');
     }
 }
