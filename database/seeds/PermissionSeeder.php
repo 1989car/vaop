@@ -42,10 +42,10 @@ class PermissionSeeder extends Seeder
             foreach(['view','create','update','delete','restore','forcedelete'] as $action){
                 \Spatie\Permission\Models\Permission::updateOrCreate([
                     'name' => $namespace.':'.$action,
-                    'guard' => 'web',
+                    'guard_name' => 'web',
                 ],[
                     'name' => $namespace.':'.$action,
-                    'guard' => 'web',
+                    'guard_name' => 'web',
                 ]);
             }
         }
@@ -61,10 +61,10 @@ class PermissionSeeder extends Seeder
         foreach($special_permissions as $permission){
             \Spatie\Permission\Models\Permission::updateOrCreate([
                 'name' => $permission,
-                'guard' => 'web',
+                'guard_name' => 'web',
             ],[
                 'name' => $permission,
-                'guard' => 'web',
+                'guard_name' => 'web',
             ]);
         }
     }
