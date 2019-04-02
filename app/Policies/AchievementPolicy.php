@@ -10,6 +10,7 @@ class AchievementPolicy
 {
     use HandlesAuthorization;
     
+    /**
      * Determine whether the user can view any achievement.
      *
      * @param  \App\Models\User  $user

@@ -35,7 +35,7 @@ class PermissionSeeder extends Seeder
             'schedules:citypair',
             'schedules:timetable',
             
-            'users',
+            'user',
         ];
         
         foreach($namespaces as $namespace){
@@ -48,6 +48,22 @@ class PermissionSeeder extends Seeder
                     'guard' => 'web',
                 ]);
             }
+        }
+        
+        $special_permissions = [
+            'user:ban',
+            'user:unban',
+            'user:impersonate',
+        ];
+        
+        foreach($special_permissions as $permission){
+            \Spatie\Permission\Models\Permission::updateOrCreate([
+                'name' => $permission,
+                'guard' => 'web',
+            ],[
+                'name' => $permission,
+                'guard' => 'web',
+            ]);
         }
     }
 }

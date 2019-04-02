@@ -2,6 +2,9 @@
 
 namespace App\Nova;
 
+use Cog\Laravel\Nova\Ban\Actions\Ban;
+use Cog\Laravel\Nova\Ban\Actions\Unban;
+use KABBOUCHI\NovaImpersonate\Impersonate;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
@@ -46,6 +49,8 @@ class User extends Resource
                 ->creationRules('required', 'string', 'min:6')
                 ->updateRules('nullable', 'string', 'min:6'),
     
+            Impersonate::make($this),
+    
             BelongsToMany::make('Achievements')->searchable(),
     
             BelongsToMany::make('Badges')->searchable(),
@@ -71,6 +76,17 @@ class User extends Resource
 
     public function actions(Request $request)
     {
-        return [];
+        return [
+            (new Ban)->canSee(function ($request) {
+                return $request->user()->can('user:ban');
+            })->canRun(function ($request) {
+                return $request->user()->can('user:ban');
+            }),
+            (new Unban)->canSee(function ($request) {
+                return $request->user()->can('user:ban');
+            })->canRun(function ($request) {
+                return $request->user()->can('user:ban');
+            }),
+        ];
     }
 }

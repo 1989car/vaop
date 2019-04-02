@@ -7,10 +7,12 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
+use Cog\Contracts\Ban\Bannable as BannableContract;
+use Cog\Laravel\Ban\Traits\Bannable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements BannableContract
 {
-    use Notifiable, SoftDeletes, HasRoles;
+    use Notifiable, SoftDeletes, HasRoles, Bannable;
 
     protected $fillable = [
         'name',
@@ -36,5 +38,10 @@ class User extends Authenticatable
     function badges()
     {
         return $this->belongsToMany('App\Models\Badge', 'user_badges','user_id','badge_id');
+    }
+    
+    public function canImpersonate()
+    {
+        return auth()->user()->can('user:impersonate');
     }
 }
