@@ -6,7 +6,7 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Image;
+use Ctessier\NovaAdvancedImageField\AdvancedImage;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -32,11 +32,14 @@ class AirlineBrand extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
     
-            Image::make('Logo', 'logo_url')
-                ->disk('uploads'),
+            AdvancedImage::make('Logo', 'logo_url')
+                ->disk('uploads')
+                ->croppable(),
     
-            Image::make('Icon', 'icon_url')
-                ->disk('uploads'),
+            AdvancedImage::make('Icon', 'icon_url')
+                ->disk('uploads')
+                ->resize(128, 128)
+                ->croppable(),
             
             HasMany::make('AirlineOperators')
         ];
