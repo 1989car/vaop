@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e67600d1cd576523c105b3c07e4fb2f1",
+    "content-hash": "ed6382ddda899bc05ad388f823e85e1f",
     "packages": [
         {
             "name": "cakephp/chronos",
@@ -1829,6 +1829,54 @@
             ],
             "description": "Highlight PHP code in terminal",
             "time": "2018-09-29T18:48:56+00:00"
+        },
+        {
+            "name": "junaidnasir/globalsettings",
+            "version": "v0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/junaidnasir/globalsettings.git",
+                "reference": "604c788dd17af139b1eb8bafa4f3dc328ed149c6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/junaidnasir/globalsettings/zipball/604c788dd17af139b1eb8bafa4f3dc328ed149c6",
+                "reference": "604c788dd17af139b1eb8bafa4f3dc328ed149c6",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^5.1",
+                "illuminate/support": "^5.1",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Junaidnasir\\GlobalSettings\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Junaid Nasir",
+                    "email": "contact@junaidnasir.com"
+                }
+            ],
+            "description": "Laravel global settings, set/get global settings for your app",
+            "homepage": "https://github.com/junaidnasir/globalsettings",
+            "keywords": [
+                "Settings",
+                "laravel",
+                "options",
+                "parameters"
+            ],
+            "time": "2016-04-14T11:40:47+00:00"
         },
         {
             "name": "kabbouchi/nova-impersonate",

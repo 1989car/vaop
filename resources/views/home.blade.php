@@ -16,24 +16,32 @@
             }
         });
     </script>
-    <link href="https://assets.vaop.flightsim.aero/vendors/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
-    <!--RTL version:<link href="https://assets.vaop.flightsim.aero/vendors/custom/fullcalendar/fullcalendar.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
-    <link href="https://assets.vaop.flightsim.aero/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
-    <!--RTL version:<link href="https://assets.vaop.flightsim.aero/vendors/base/vendors.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
-    <link href="https://assets.vaop.flightsim.aero/demo/demo4/base/style.bundle.css" rel="stylesheet" type="text/css" />
-    <!--RTL version:<link href="https://assets.vaop.flightsim.aero/demo/demo4/base/style.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
+
+    @if(GlobalSettings::get('rtl'))
+        <link href="https://assets.vaop.flightsim.aero/vendors/custom/fullcalendar/fullcalendar.bundle.rtl.css" rel="stylesheet" type="text/css" />
+        <link href="https://assets.vaop.flightsim.aero/vendors/base/vendors.bundle.rtl.css" rel="stylesheet" type="text/css" />
+        <link href="https://assets.vaop.flightsim.aero/demo/demo4/base/style.bundle.rtl.css" rel="stylesheet" type="text/css" />
+    @else
+        <link href="https://assets.vaop.flightsim.aero/vendors/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+        <link href="https://assets.vaop.flightsim.aero/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
+        <link href="https://assets.vaop.flightsim.aero/demo/demo4/base/style.bundle.css" rel="stylesheet" type="text/css" />
+    @endif
 
     @yield('stylesheets')
 
-    <link rel="shortcut icon" href="https://assets.vaop.flightsim.aero/media/logos/favicon.ico" />
+    <link rel="shortcut icon" href="{{ env('AZURE_STORAGE_URL').GlobalSettings::get('favicon') }}" />
 </head>
 
-<body style="background-image: url(https://assets.vaop.flightsim.aero/demo/demo4/media/bg/header.jpg); background-position: center top; background-size: 100% 350px;" class="kt-page--loading-enabled kt-page--loading kt-page--fixed kt-header--fixed kt-header--minimize-menu kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent kt-page--loading">
+@if(GlobalSettings::has('header-background-image') && GlobalSettings::get('header-background-image') !== '')
+<body style="background-image: url({{ env('AZURE_STORAGE_URL').GlobalSettings::get('header-background-image') }}); background-position: center top; background-size: 100% 350px;" class="kt-page--loading-enabled kt-page--loading kt-page--fixed kt-header--fixed kt-header--minimize-menu kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent kt-page--loading">
+@else
+    <body style="background-image: url('/images/default-header-background.png'); background-position: center top; background-size: 100% 350px;" class="kt-page--loading-enabled kt-page--loading kt-page--fixed kt-header--fixed kt-header--minimize-menu kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent kt-page--loading">
+@endif
 
 <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
     <div class="kt-header-mobile__logo">
         <a href="{{ route('home') }}">
-            <img alt="Logo" src="https://assets.vaop.flightsim.aero/media/logos/logo-4-sm.png" />
+            <img alt="Logo" src="{{ env('AZURE_STORAGE_URL').GlobalSettings::get('logo-small') }}" />
         </a>
     </div>
     <div class="kt-header-mobile__toolbar">
@@ -51,8 +59,8 @@
 
                     <div class="kt-header__brand   kt-grid__item" id="kt_header_brand">
                         <a class="kt-header__brand-logo" href="{{ route('home') }}">
-                            <img alt="Logo" src="https://assets.vaop.flightsim.aero/media/logos/logo-4.png" class="kt-header__brand-logo-default" />
-                            <img alt="Logo" src="https://assets.vaop.flightsim.aero/media/logos/logo-4-sm.png" class="kt-header__brand-logo-sticky" />
+                            <img alt="Logo" src="{{ env('AZURE_STORAGE_URL').GlobalSettings::get('logo-full') }}" class="kt-header__brand-logo-default" />
+                            <img alt="Logo" src="{{ env('AZURE_STORAGE_URL').GlobalSettings::get('logo-small') }}" class="kt-header__brand-logo-sticky" />
                         </a>
                     </div>
 
@@ -76,7 +84,9 @@
                 </div>
             </div>
 
-            @include('layouts.partials.footer')
+            @if(GlobalSettings::get('show-footer'))
+                @include('layouts.partials.footer')
+            @endif
 
         </div>
     </div>
@@ -84,9 +94,11 @@
 
 @include('layouts.partials.quickpanel')
 
-<div id="kt_scrolltop" class="kt-scrolltop">
-    <i class="fa fa-arrow-up"></i>
-</div>
+@if(GlobalSettings::get('show-scrolltop'))
+    <div id="kt_scrolltop" class="kt-scrolltop">
+        <i class="fa fa-arrow-up"></i>
+    </div>
+@endif
 
 <script>
     var KTAppOptions = {
