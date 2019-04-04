@@ -1,8 +1,9 @@
 <div class="kt-subheader   kt-grid__item" id="kt_subheader">
     <div class="kt-subheader__main">
         <h3 class="kt-subheader__title">Dashboard</h3>
-        <h4 class="kt-subheader__desc">Latest updates and statistic charts</h4>
+        <h4 class="kt-subheader__desc">Some stuff</h4>
     </div>
+    <!--
     <div class="kt-subheader__toolbar">
         <div class="kt-subheader__wrapper">
             <a href="#" class="btn kt-subheader__btn-secondary">
@@ -22,4 +23,5 @@
             </div>
         </div>
     </div>
+    -->
 </div>
