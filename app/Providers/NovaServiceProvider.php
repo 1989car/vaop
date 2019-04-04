@@ -74,6 +74,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 ]
             ]),
             \Vyuldashev\NovaPermission\NovaPermissionTool::make(),
+            \Kristories\Novassport\Novassport::make(),
             \ChrisWare\NovaBreadcrumbs\NovaBreadcrumbs::make(),
         ];
     }

@@ -6,13 +6,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Cog\Contracts\Ban\Bannable as BannableContract;
 use Cog\Laravel\Ban\Traits\Bannable;
 
 class User extends Authenticatable implements BannableContract
 {
-    use Notifiable, SoftDeletes, HasRoles, Bannable;
+    use Notifiable, SoftDeletes, HasRoles, Bannable, HasApiTokens;
 
     protected $fillable = [
         'name',
