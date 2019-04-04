@@ -18,6 +18,7 @@ class CreateCountriesTable extends Migration
             $table->bigInteger('continent_id');
             $table->string('name');
             $table->string('code');
+            $table->boolean('allow_sync')->default(true);
             $table->timestamps();
             $table->softDeletes();
             

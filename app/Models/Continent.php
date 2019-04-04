@@ -12,10 +12,15 @@ class Continent extends Model
     protected $fillable = [
         'code',
         'name',
+        'allow_sync',
+    ];
+    
+    protected $casts = [
+        'allow_sync' => 'boolean',
     ];
     
     function countries()
     {
-        return $this->hasMany('App\Models\Country','id','country_id');
+        return $this->hasMany('App\Models\Country','continent_id','id');
     }
 }

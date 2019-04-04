@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
@@ -27,15 +28,16 @@ class Continent extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make()->sortable(),
-    
             Text::make('Code')
+                ->help('<span style="color:red;">WARNING: Editing this field may break future synchronizations</span>')
                 ->sortable()
-                ->rules('required', 'max:255'),
-    
+                ->rules('required', 'max:2'),
+            
             Text::make('Name')
                 ->sortable()
                 ->rules('required', 'max:255'),
+            
+            Boolean::make('Allow Sync', 'allow_sync'),
     
             HasMany::make('Countries'),
         ];

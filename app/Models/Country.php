@@ -13,6 +13,11 @@ class Country extends Model
         'continent_id',
         'code',
         'name',
+        'allow_sync',
+    ];
+    
+    protected $casts = [
+        'allow_sync' => 'boolean',
     ];
     
     function airlineoperators()

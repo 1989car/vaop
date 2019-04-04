@@ -17,6 +17,7 @@ class CreateContinentsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('code');
+            $table->boolean('allow_sync')->default(true);
             $table->timestamps();
             $table->softDeletes();
             
