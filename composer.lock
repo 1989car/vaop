@@ -4,8 +4,49 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ab52a401706cf7d6302992a83e791a4c",
+    "content-hash": "75bbf9cf998bcb4162a7609c413b968e",
     "packages": [
+        {
+            "name": "alexpgates/horizon-link",
+            "version": "0.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alexpgates/nova-horizon-link.git",
+                "reference": "7a5aa9bdec7b793bcc898a36e562293e5ded1c03"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alexpgates/nova-horizon-link/zipball/7a5aa9bdec7b793bcc898a36e562293e5ded1c03",
+                "reference": "7a5aa9bdec7b793bcc898a36e562293e5ded1c03",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Alexpgates\\HorizonLink\\ToolServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Alexpgates\\HorizonLink\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova tool.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "time": "2018-09-20T12:57:37+00:00"
+        },
         {
             "name": "cakephp/chronos",
             "version": "1.2.4",
@@ -2508,6 +2549,75 @@
             "time": "2019-03-26T17:19:10+00:00"
         },
         {
+            "name": "laravel/horizon",
+            "version": "v3.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/horizon.git",
+                "reference": "62ba971c2b180fe54dd3e0cde418c7181a481460"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/horizon/zipball/62ba971c2b180fe54dd3e0cde418c7181a481460",
+                "reference": "62ba971c2b180fe54dd3e0cde418c7181a481460",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/chronos": "^1.0",
+                "ext-json": "*",
+                "ext-pcntl": "*",
+                "ext-posix": "*",
+                "illuminate/contracts": "~5.7.0|~5.8.0|~5.9.0",
+                "illuminate/queue": "~5.7.0|~5.8.0|~5.9.0",
+                "illuminate/support": "~5.7.0|~5.8.0|~5.9.0",
+                "php": ">=7.1.0",
+                "predis/predis": "^1.1",
+                "ramsey/uuid": "^3.5",
+                "symfony/debug": "^4.2",
+                "symfony/process": "^4.2"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "orchestra/testbench": "^3.7",
+                "phpunit/phpunit": "^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Horizon\\HorizonServiceProvider"
+                    ],
+                    "aliases": {
+                        "Horizon": "Laravel\\Horizon\\Horizon"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Horizon\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Dashboard and code-driven configuration for Laravel queues.",
+            "keywords": [
+                "laravel",
+                "queue"
+            ],
+            "time": "2019-04-02T16:09:07+00:00"
+        },
+        {
             "name": "laravel/nova",
             "version": "dev-master",
             "dist": {
@@ -3012,6 +3122,63 @@
                 "server"
             ],
             "time": "2019-03-29T18:19:35+00:00"
+        },
+        {
+            "name": "llaski/nova-scheduled-jobs",
+            "version": "1.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/llaski/nova-scheduled-jobs.git",
+                "reference": "5032cd59fc52c4327eca9193c23a89dd3e5d7e47"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/llaski/nova-scheduled-jobs/zipball/5032cd59fc52c4327eca9193c23a89dd3e5d7e47",
+                "reference": "5032cd59fc52c4327eca9193c23a89dd3e5d7e47",
+                "shasum": ""
+            },
+            "require": {
+                "dragonmantank/cron-expression": "^2.2",
+                "illuminate/console": "^5.6|^5.7",
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "illuminate/cache": "^5.6",
+                "orchestra/testbench": "^3.7",
+                "phpunit/phpunit": "^7.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Llaski\\NovaScheduledJobs\\NovaScheduledJobsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Llaski\\NovaScheduledJobs\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Larry Laski",
+                    "email": "larry.laski@gmail.com",
+                    "homepage": "https://larrylaski.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A Laravel Nova card to view your scheduled jobs.",
+            "homepage": "https://github.com/llaski/nova-scheduled-jobs",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "time": "2018-12-07T18:26:01+00:00"
         },
         {
             "name": "matthewbdaly/laravel-azure-storage",
@@ -3641,6 +3808,56 @@
                 "x509"
             ],
             "time": "2019-03-10T16:53:45+00:00"
+        },
+        {
+            "name": "predis/predis",
+            "version": "v1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nrk/predis.git",
+                "reference": "f0210e38881631afeafb56ab43405a92cafd9fd1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nrk/predis/zipball/f0210e38881631afeafb56ab43405a92cafd9fd1",
+                "reference": "f0210e38881631afeafb56ab43405a92cafd9fd1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.8"
+            },
+            "suggest": {
+                "ext-curl": "Allows access to Webdis when paired with phpiredis",
+                "ext-phpiredis": "Allows faster serialization and deserialization of the Redis protocol"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Predis\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Daniele Alessandri",
+                    "email": "suppakilla@gmail.com",
+                    "homepage": "http://clorophilla.net"
+                }
+            ],
+            "description": "Flexible and feature-complete Redis client for PHP and HHVM",
+            "homepage": "http://github.com/nrk/predis",
+            "keywords": [
+                "nosql",
+                "predis",
+                "redis"
+            ],
+            "time": "2016-06-16T16:22:20+00:00"
         },
         {
             "name": "psr/container",

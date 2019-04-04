@@ -75,6 +75,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             ]),
             \Vyuldashev\NovaPermission\NovaPermissionTool::make(),
             \Kristories\Novassport\Novassport::make(),
+            \Llaski\NovaScheduledJobs\NovaScheduledJobsTool::make(),
+            \Alexpgates\HorizonLink\HorizonLink::make(),
             \ChrisWare\NovaBreadcrumbs\NovaBreadcrumbs::make(),
         ];
     }
