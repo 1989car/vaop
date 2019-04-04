@@ -13,6 +13,7 @@
         "ctessier/nova-advanced-image-field": "^1.0",
         "cybercog/laravel-nova-ban": "^1.1",
         "fideloper/proxy": "^4.0",
+        "genealabs/laravel-model-caching": "^0.4.11",
         "intervention/image": "^2.4",
         "junaidnasir/globalsettings": "^0.1.1",
         "kabbouchi/nova-impersonate": "^1.0",
