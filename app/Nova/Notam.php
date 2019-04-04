@@ -6,62 +6,48 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use SaintSystems\Nova\ResourceGroupMenu\DisplaysInResourceGroupMenu;
 
-class Airport extends Resource
+class Notam extends Resource
 {
     use DisplaysInResourceGroupMenu;
     
     public static $displayInNavigation = false;
-    public static $group = 'Reference';
-    public static $subGroup = 'AIRAC';
+    public static $group = 'Operations';
+    public static $subGroup = 'Advisories';
     
-    public static $model = 'App\Models\Airport';
-    public static $title = 'name';
+    public static $model = 'App\Models\Notam';
+    public static $title = 'title';
     public static $search = [
-        'name',
-        'iata',
+        'title',
         'icao',
-        'latitude',
-        'longitude',
-        'elevation',
+        'body',
     ];
+    
+    public static function label() {
+        return 'NOTAMs';
+    }
     
     public function fields(Request $request)
     {
         return [
-            BelongsTo::make('MetroArea')->searchable(),
+            BelongsTo::make('Airport')->searchable(),
             
             ID::make()->sortable(),
             
-            Text::make('Name')
+            Text::make('Title')
                 ->sortable()
                 ->rules('required', 'max:255'),
-    
-            Text::make('IATA')
+            
+            Text::make('Code')
+                ->sortable(),
+            
+            Textarea::make('Body')
                 ->sortable()
-                ->rules('required', 'max:3|min:3'),
-    
-            Text::make('ICAO')
-                ->sortable()
-                ->rules('required', 'max:4|min:4'),
-    
-            Text::make('Latitude')
-                ->sortable()
-                ->rules('required', 'max:255'),
-    
-            Text::make('Longitude')
-                ->sortable()
-                ->rules('required', 'max:255'),
-    
-            Number::make('Elevation')
-                ->sortable()
-                ->rules('required', 'max:255'),
-    
-            HasMany::make('Notam'),
+                ->rules('required'),
         ];
     }
     

@@ -40,7 +40,7 @@
 
     <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
         <div class="kt-header-mobile__logo">
-            <a href="{{ route('home') }}">
+            <a href="{{ route('dashboard') }}">
                 <img alt="Logo" src="{{ env('UPLOADS_BASE_URL').GlobalSettings::get('logo-small-light') }}" height="60px" />
             </a>
         </div>
@@ -58,7 +58,7 @@
                     <div class="kt-container">
 
                         <div class="kt-header__brand   kt-grid__item" id="kt_header_brand">
-                            <a class="kt-header__brand-logo" href="{{ route('home') }}">
+                            <a class="kt-header__brand-logo" href="{{ route('dashboard') }}">
                                 <img alt="Logo" src="{{ env('UPLOADS_BASE_URL').GlobalSettings::get('logo-full-dark') }}" class="kt-header__brand-logo-default" height="60px" />
                                 <img alt="Logo" src="{{ env('UPLOADS_BASE_URL').GlobalSettings::get('logo-small-dark') }}" class="kt-header__brand-logo-sticky" height="60px" />
                             </a>

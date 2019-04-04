@@ -3,7 +3,7 @@
         <div class="kt-container">
             <div class="kt-footer__wrapper">
                 <div class="kt-footer__logo">
-                    <a class="kt-header__brand-logo" href="{{ route('home') }}">
+                    <a class="kt-header__brand-logo" href="{{ route('dashboard') }}">
                         <img alt="Logo" src="{{ env('UPLOADS_BASE_URL').GlobalSettings::get('logo-small-dark') }}" class="kt-header__brand-logo-sticky" height="30px">
                     </a>
                     <div class="kt-footer__copyright">

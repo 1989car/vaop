@@ -18,7 +18,7 @@ class User extends Resource
 {
     use DisplaysInResourceGroupMenu;
     
-    public static $displayInNavigation = false;
+    public static $displayInNavigation = true;
     public static $group = 'Community';
     public static $subGroup = 'User';
     

@@ -32,6 +32,8 @@ class PermissionSeeder extends Seeder
             'geography:metroarea',
             'geography:subdivision',
             
+            'notam',
+            
             'schedules:citypair',
             'schedules:timetable',
             

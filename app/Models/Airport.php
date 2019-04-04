@@ -33,4 +33,9 @@ class Airport extends Model
     {
         return $this->belongsTo('App\Models\MetroArea','metroarea_id','id');
     }
+    
+    function notam()
+    {
+        return $this->hasMany('App\Models\Notam','icao','icao');
+    }
 }
