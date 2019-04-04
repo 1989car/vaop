@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "456851d7975d610b8359d8ff1fa2f3ab",
+    "content-hash": "fc46daf243f4b560ab5fecad53ab763b",
     "packages": [
         {
             "name": "cakephp/chronos",
@@ -3529,6 +3529,54 @@
                 "uuid"
             ],
             "time": "2018-07-19T23:38:55+00:00"
+        },
+        {
+            "name": "saintsystems/nova-resource-group-menu",
+            "version": "0.0.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/saintsystems/nova-resource-group-menu.git",
+                "reference": "7d2fbf64698db47edc874e1b9707e76f2b96f625"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/saintsystems/nova-resource-group-menu/zipball/7d2fbf64698db47edc874e1b9707e76f2b96f625",
+                "reference": "7d2fbf64698db47edc874e1b9707e76f2b96f625",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/nova": ">=1.0",
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "SaintSystems\\Nova\\ResourceGroupMenu\\ToolServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SaintSystems\\Nova\\ResourceGroupMenu\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Saint Systems"
+                }
+            ],
+            "description": "Resource group sub-menus for Laravel Nova.",
+            "keywords": [
+                "laravel",
+                "nova",
+                "resources"
+            ],
+            "time": "2019-03-26T16:34:38+00:00"
         },
         {
             "name": "spatie/laravel-permission",

@@ -9,10 +9,16 @@ use Illuminate\Http\Request;
 use Ctessier\NovaAdvancedImageField\AdvancedImage;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use SaintSystems\Nova\ResourceGroupMenu\DisplaysInResourceGroupMenu;
 
 class AirlineOperator extends Resource
 {
-    public static $group = 'Airlines';
+    use DisplaysInResourceGroupMenu;
+    
+    public static $displayInNavigation = false;
+    public static $group = 'Reference';
+    public static $subGroup = 'Airline';
+    
     public static $model = 'App\Models\AirlineOperator';
     public static $title = 'name';
     public static $search = [

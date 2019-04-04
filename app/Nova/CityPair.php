@@ -7,10 +7,16 @@ use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use SaintSystems\Nova\ResourceGroupMenu\DisplaysInResourceGroupMenu;
 
 class CityPair extends Resource
 {
-    public static $group = 'Schedules';
+    use DisplaysInResourceGroupMenu;
+    
+    public static $displayInNavigation = false;
+    public static $group = 'Operations';
+    public static $subGroup = 'Schedule';
+    
     public static $model = 'App\Models\CityPair';
     public static $title = 'id';
     public static $search = [

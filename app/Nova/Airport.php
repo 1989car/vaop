@@ -9,10 +9,16 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use SaintSystems\Nova\ResourceGroupMenu\DisplaysInResourceGroupMenu;
 
 class Airport extends Resource
 {
-    public static $group = 'AIRAC';
+    use DisplaysInResourceGroupMenu;
+    
+    public static $displayInNavigation = false;
+    public static $group = 'Reference';
+    public static $subGroup = 'AIRAC';
+    
     public static $model = 'App\Models\Airport';
     public static $title = 'name';
     public static $search = [

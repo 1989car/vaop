@@ -6,14 +6,20 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Image;
+use Ctessier\NovaAdvancedImageField\AdvancedImage;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use SaintSystems\Nova\ResourceGroupMenu\DisplaysInResourceGroupMenu;
 
 class Badge extends Resource
 {
-    public static $group = 'Gamification';
+    use DisplaysInResourceGroupMenu;
+    
+    public static $displayInNavigation = false;
+    public static $group = 'Community';
+    public static $subGroup = 'Gamification';
+    
     public static $model = 'App\Models\Badge';
     public static $title = 'name';
     public static $search = [
@@ -33,7 +39,7 @@ class Badge extends Resource
             Textarea::make('Description')
                 ->sortable(),
     
-            Image::make('Icon', 'icon_url')
+            AdvancedImage::make('Icon', 'icon_url')
                 ->disk('uploads'),
     
             Textarea::make('DQL')

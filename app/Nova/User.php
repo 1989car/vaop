@@ -12,10 +12,16 @@ use Laravel\Nova\Fields\MorphToMany;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\Password;
+use SaintSystems\Nova\ResourceGroupMenu\DisplaysInResourceGroupMenu;
 
 class User extends Resource
 {
-    public static $group = 'Users';
+    use DisplaysInResourceGroupMenu;
+    
+    public static $displayInNavigation = false;
+    public static $group = 'Community';
+    public static $subGroup = 'User';
+    
     public static $model = 'App\Models\User';
     public static $title = 'name';
     public static $search = [

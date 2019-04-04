@@ -8,10 +8,16 @@ use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use SaintSystems\Nova\ResourceGroupMenu\DisplaysInResourceGroupMenu;
 
 class Country extends Resource
 {
-    public static $group = 'Geography';
+    use DisplaysInResourceGroupMenu;
+    
+    public static $displayInNavigation = false;
+    public static $group = 'Reference';
+    public static $subGroup = 'Geography';
+    
     public static $model = 'App\Models\Country';
     public static $title = 'name';
     public static $search = [

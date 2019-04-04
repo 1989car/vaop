@@ -9,10 +9,16 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use SaintSystems\Nova\ResourceGroupMenu\DisplaysInResourceGroupMenu;
 
 class Timetable extends Resource
 {
-    public static $group = 'Schedules';
+    use DisplaysInResourceGroupMenu;
+    
+    public static $displayInNavigation = false;
+    public static $group = 'Operations';
+    public static $subGroup = 'Schedule';
+    
     public static $model = 'App\Models\Timetable';
     public static $title = 'id';
     public static $search = [

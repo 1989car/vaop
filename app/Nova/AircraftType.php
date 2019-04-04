@@ -10,10 +10,16 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use SaintSystems\Nova\ResourceGroupMenu\DisplaysInResourceGroupMenu;
 
 class AircraftType extends Resource
 {
-    public static $group = 'Aircraft';
+    use DisplaysInResourceGroupMenu;
+    
+    public static $displayInNavigation = false;
+    public static $group = 'Operations';
+    public static $subGroup = 'Aircraft';
+    
     public static $model = 'App\Models\AircraftType';
     public static $title = 'name';
     public static $search = [
