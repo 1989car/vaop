@@ -25,8 +25,6 @@ class CityPair extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make()->sortable(),
-            
             BelongsTo::make('Origin', 'origin', 'App\Nova\Airport')->searchable(),
     
             BelongsTo::make('Destination', 'destination' ,'App\Nova\Airport')->searchable(),

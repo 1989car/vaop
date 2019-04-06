@@ -22,8 +22,8 @@ class CreateAirlineOperatorsTable extends Migration
             $table->string('iata',2)->nullable();
             $table->string('icao',3)->nullable();
             $table->string('type');
-            $table->string('logo_url');
-            $table->string('icon_url');
+            $table->string('logo_url')->nullable();
+            $table->string('icon_url')->nullable();
             $table->timestamps();
             $table->softDeletes();
     

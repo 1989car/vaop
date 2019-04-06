@@ -2,11 +2,13 @@
 
 namespace App\Nova;
 
+use App\Enums\AirlineOperatorType;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Ctessier\NovaAdvancedImageField\AdvancedImage;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use SaintSystems\Nova\ResourceGroupMenu\DisplaysInResourceGroupMenu;
@@ -32,11 +34,9 @@ class AirlineOperator extends Resource
     public function fields(Request $request)
     {
         return [
-            BelongsTo::make('AirlineBrand'),
+            BelongsTo::make('Airline Brand', 'AirlineBrand'),
             
             BelongsTo::make('Country')->searchable(),
-            
-            ID::make()->sortable(),
     
             Text::make('Name')
                 ->sortable()
@@ -53,19 +53,23 @@ class AirlineOperator extends Resource
             Text::make('ICAO')
                 ->sortable()
                 ->rules('required', 'max:3'),
-    
-            Text::make('Type')
+            
+            Select::make('Type')
+                ->options(AirlineOperatorType::toSelectArray())
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->rules('required'),
     
             AdvancedImage::make('Logo', 'logo_url')
+                ->help('Recommended Size: 250x60')
                 ->disk('uploads')
-                ->croppable(),
+                ->resize(null, 60)
+                ->croppable(21/5),
     
             AdvancedImage::make('Icon', 'icon_url')
+                ->help('Recommended Size: 128x128 pixels')
                 ->disk('uploads')
                 ->resize(128, 128)
-                ->croppable(),
+                ->croppable(1/1),
             
             HasMany::make('Timetables'),
         ];

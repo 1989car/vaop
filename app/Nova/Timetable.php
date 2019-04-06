@@ -27,11 +27,11 @@ class Timetable extends Resource
     public function fields(Request $request)
     {
         return [
-            BelongsTo::make('CityPair')->searchable(),
+            BelongsTo::make('City Pair', 'CityPair')->searchable(),
             
-            BelongsTo::make('AirlineOperator')->searchable(),
+            BelongsTo::make('Airline Operator', 'AirlineOperator')->searchable(),
             
-            BelongsTo::make('AircraftFamily')->searchable(),
+            BelongsTo::make('Aircraft Family', 'AircraftFamily')->searchable(),
             
             ID::make()->sortable(),
             

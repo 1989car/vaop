@@ -32,22 +32,23 @@ class AirlineBrand extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make()->sortable(),
-    
             Text::make('Name')
                 ->sortable()
                 ->rules('required', 'max:255'),
     
             AdvancedImage::make('Logo', 'logo_url')
+                ->help('Recommended Size: 250x60')
                 ->disk('uploads')
-                ->croppable(),
+                ->resize(null, 60)
+                ->croppable(21/5),
     
             AdvancedImage::make('Icon', 'icon_url')
+                ->help('Recommended Size: 128x128 pixels')
                 ->disk('uploads')
                 ->resize(128, 128)
-                ->croppable(),
+                ->croppable(1/1),
             
-            HasMany::make('AirlineOperators')
+            HasMany::make('Airline Operators', 'AirlineOperators')
         ];
     }
 

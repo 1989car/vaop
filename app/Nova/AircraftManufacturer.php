@@ -33,13 +33,11 @@ class AircraftManufacturer extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make()->sortable(),
-            
             Text::make('Name')
                 ->sortable()
                 ->rules('required', 'max:255'),
             
-            HasMany::make('AircraftTypes'),
+            HasMany::make('Aircraft Types', 'AircraftTypes'),
          ];
     }
     

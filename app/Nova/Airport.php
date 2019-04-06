@@ -33,9 +33,7 @@ class Airport extends Resource
     public function fields(Request $request)
     {
         return [
-            BelongsTo::make('MetroArea')->searchable(),
-            
-            ID::make()->sortable(),
+            BelongsTo::make('Metro Area', 'MetroArea')->searchable(),
             
             Text::make('Name')
                 ->sortable()
@@ -72,7 +70,9 @@ class Airport extends Resource
     
     public function filters(Request $request)
     {
-        return [];
+        return [
+            new Filters\MetroArea(),
+        ];
     }
     
     public function lenses(Request $request)

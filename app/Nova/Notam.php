@@ -36,8 +36,6 @@ class Notam extends Resource
         return [
             BelongsTo::make('Airport')->searchable(),
             
-            ID::make()->sortable(),
-            
             Text::make('Title')
                 ->sortable()
                 ->rules('required', 'max:255'),

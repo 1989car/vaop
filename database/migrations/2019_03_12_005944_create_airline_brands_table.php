@@ -16,8 +16,8 @@ class CreateAirlineBrandsTable extends Migration
         Schema::create('airline_brands', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('logo_url');
-            $table->string('icon_url');
+            $table->string('logo_url')->nullable();
+            $table->string('icon_url')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

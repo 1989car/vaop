@@ -33,13 +33,11 @@ class AircraftFamily extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make()->sortable(),
-            
             Text::make('Name')
                 ->sortable()
                 ->rules('required', 'max:255'),
     
-            BelongsToMany::make('AircraftTypes'),
+            BelongsToMany::make('Aircraft Types', 'AircraftTypes'),
          ];
     }
     

@@ -33,9 +33,7 @@ class AircraftType extends Resource
     public function fields(Request $request)
     {
         return [
-            BelongsTo::make('AircraftManufacturer')->searchable(),
-            
-            ID::make()->sortable(),
+            BelongsTo::make('Aircraft Manufacturer', 'AircraftManufacturer')->searchable(),
             
             Text::make('Model')
                 ->sortable()
@@ -57,7 +55,7 @@ class AircraftType extends Resource
                 ->sortable()
                 ->rules('required', 'max:1'),
             
-            BelongsToMany::make('AircraftFamilies'),
+            BelongsToMany::make('Aircraft Families', 'AircraftFamilies'),
          ];
     }
     

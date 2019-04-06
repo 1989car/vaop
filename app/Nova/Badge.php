@@ -31,8 +31,6 @@ class Badge extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make()->sortable(),
-    
             Text::make('Name')
                 ->sortable(),
     

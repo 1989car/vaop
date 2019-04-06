@@ -49,9 +49,9 @@ class Country extends Resource
     
             Boolean::make('Allow Sync', 'allow_sync'),
             
-            HasMany::make('MetroArea'),
+            HasMany::make('Metro Area', 'MetroArea'),
             
-            HasMany::make('AirlineOperators'),
+            HasMany::make('Airline Operators', 'AirlineOperators'),
         ];
     }
     
