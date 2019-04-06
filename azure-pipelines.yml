@@ -6,6 +6,17 @@ trigger:
     - master
     - staging
 
+resources:
+  containers:
+  - container: mariadb
+    image: mariadb:10.2
+    ports:
+    - 3306
+  - container: redis
+    image: redis:5
+    ports:
+    - 6379
+
 jobs:
 
 - job: 'PHP'
@@ -18,6 +29,9 @@ jobs:
       PHP72:
         phpVersion: '7.2'
     maxParallel: 2
+  services:
+    mariadb: mariadb
+    redis: redis
 
   steps:
   - script: |
