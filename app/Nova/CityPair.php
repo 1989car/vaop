@@ -18,9 +18,13 @@ class CityPair extends Resource
     public static $subGroup = 'Schedule';
     
     public static $model = 'App\Models\CityPair';
-    public static $title = 'id';
     public static $search = [
     ];
+    
+    public function title()
+    {
+        return $this->origin->icao.'->'.$this->destination->icao;
+    }
     
     public function fields(Request $request)
     {

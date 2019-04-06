@@ -22,6 +22,7 @@ class CreateTimetablesTable extends Migration
             $table->string('daysoperated');
             $table->time('departure_time_utc')->nullable();
             $table->time('arrival_time_utc')->nullable();
+            $table->boolean('next_day')->default(false);
             $table->timestamps();
             $table->softDeletes();
             

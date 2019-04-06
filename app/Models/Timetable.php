@@ -17,12 +17,14 @@ class Timetable extends Model
         'daysoperated',
         'departure_time_utc',
         'arrival_time_utc',
+        'next_day',
     ];
     
     protected $casts = [
         'daysoperated' => 'array',
         'departure_time_utc' => 'time',
         'arrival_time_utc' => 'time',
+        'next_day' => 'boolean',
     ];
     
     function aircraftfamily()

@@ -2,13 +2,17 @@
 
 namespace App\Nova;
 
+use App\Enums\DayOfWeekType;
+use Fourstacks\NovaCheckboxes\Checkboxes;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Michielfb\Time\Time;
 use SaintSystems\Nova\ResourceGroupMenu\DisplaysInResourceGroupMenu;
 
 class Timetable extends Resource
@@ -20,9 +24,16 @@ class Timetable extends Resource
     public static $subGroup = 'Schedule';
     
     public static $model = 'App\Models\Timetable';
-    public static $title = 'id';
     public static $search = [
+        'number',
+        'departure_time_utc',
+        'arrival_time_utc',
     ];
+    
+    public function title()
+    {
+        return $this->airlineoperator->iata.$this->number.' ('.$this->citypair->origin->icao.'-'.$this->citypair->destination->icao.')';
+    }
     
     public function fields(Request $request)
     {
@@ -33,20 +44,28 @@ class Timetable extends Resource
             
             BelongsTo::make('Aircraft Family', 'AircraftFamily')->searchable(),
             
-            ID::make()->sortable(),
-            
             Number::make('Number')
                 ->sortable()
                 ->rules('required', 'max:6'),
-    
-            Text::make('Days Operated', 'daysoperated')
+            
+            Checkboxes::make('Days Operated', 'daysoperated')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->rules('required')
+                ->options(DayOfWeekType::toSelectArray())
+                ->saveUncheckedValues()
+                ->displayUncheckedValuesOnDetail(),
     
-            Text::make('Departure Time UTC', 'departure_time_utc')
+            Time::make('Departure Time UTC', 'departure_time_utc')
+                ->format('HH:mm')
+                ->help('All times should be in UTC (GMT+0)')
                 ->sortable(),
     
-            Text::make('Arrival Time UTC', 'arrival_time_utc')
+            Boolean::make('Flight Arrives Following Day','next_day')
+                ->sortable(),
+    
+            Time::make('Arrival Time UTC', 'arrival_time_utc')
+                ->format('HH:mm')
+                ->help('All times should be in UTC (GMT+0)')
                 ->sortable(),
         ];
     }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "da6e87027b01c956d64d3eb9e8d766f8",
+    "content-hash": "4495159f89fa2f96d2023eb8d7e8740c",
     "packages": [
         {
             "name": "alexpgates/horizon-link",
@@ -909,6 +909,52 @@
             "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
             "homepage": "https://github.com/firebase/php-jwt",
             "time": "2017-06-27T22:17:23+00:00"
+        },
+        {
+            "name": "fourstacks/nova-checkboxes",
+            "version": "v0.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fourstacks/nova-checkboxes.git",
+                "reference": "56f7d67cdc7e8327c350a9fa5e91689e8c0dd9d9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fourstacks/nova-checkboxes/zipball/56f7d67cdc7e8327c350a9fa5e91689e8c0dd9d9",
+                "reference": "56f7d67cdc7e8327c350a9fa5e91689e8c0dd9d9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "laravel/nova": "^1.0",
+                "orchestra/testbench": "3.7.*",
+                "phpunit/phpunit": "^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Fourstacks\\NovaCheckboxes\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Fourstacks\\NovaCheckboxes\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova field.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "time": "2019-03-08T07:46:14+00:00"
         },
         {
             "name": "genealabs/laravel-model-caching",
@@ -3309,6 +3355,47 @@
                 "storage"
             ],
             "time": "2019-03-02T12:35:01+00:00"
+        },
+        {
+            "name": "michielfb/laravel-nova-time-field",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/michielfb/laravel-nova-time-field.git",
+                "reference": "ae8a734da967e104094798d7a972c60fa40d3720"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/michielfb/laravel-nova-time-field/zipball/ae8a734da967e104094798d7a972c60fa40d3720",
+                "reference": "ae8a734da967e104094798d7a972c60fa40d3720",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Michielfb\\Time\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Michielfb\\Time\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova field.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "time": "2018-10-01T18:56:20+00:00"
         },
         {
             "name": "microsoft/azure-storage-blob",
