@@ -27,7 +27,7 @@ jobs:
   - script: ./vendor/bin/phpunit
     displayName: 'phpunit testing'
 
-- job: Node JS
+- job: NodeJS
   steps:
   - task: NodeTool@0
     inputs:
