@@ -41,7 +41,7 @@ jobs:
     displayName: 'export DB_PORT'
   - script: export REDIS_PORT=${agent.services.redis.ports.6379}
     displayName: 'export REDIS_PORT'
-    
+
   - script: |
       sudo update-alternatives --set php /usr/bin/php$(phpVersion)
       sudo update-alternatives --set phar /usr/bin/phar$(phpVersion)
@@ -84,3 +84,10 @@ jobs:
 
   - script: npm run prod
     displayName: 'npm install prod build'
+
+- job: 'Dockerfile'
+  pool:
+    vmImage: 'Ubuntu-16.04'
+  steps:
+  - script: docker build -f Dockerfile -t vaop:$(build.buildId) .
+    displayName: 'docker build'
