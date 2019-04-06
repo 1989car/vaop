@@ -6,9 +6,6 @@ trigger:
     - master
     - staging
 
-pool:
-  vmImage: 'Ubuntu-16.04'
-
 variables:
   phpVersion: 7.2
   imageName: 'vaop:$(build.buildId)'
@@ -16,6 +13,8 @@ variables:
 jobs:
 
 - job: 'PHP'
+  pool:
+    vmImage: 'Ubuntu-16.04'
   steps:
   - script: |
       sudo update-alternatives --set php /usr/bin/php$(phpVersion)
@@ -33,6 +32,8 @@ jobs:
     displayName: 'phpunit testing'
 
 - job: 'NodeJS'
+  pool:
+    vmImage: 'Ubuntu-16.04'
   steps:
   - task: NodeTool@0
     inputs:
