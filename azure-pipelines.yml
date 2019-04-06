@@ -31,8 +31,8 @@ jobs:
   pool:
     vmImage: 'Ubuntu-16.04'
   services:
-    mariadb: mariadb
-    redis: redis
+  - mariadb: mariadb
+  - redis: redis
 
   steps:
   - script: "export DB_PORT=${agent.services.mariadb.ports.3306}"
