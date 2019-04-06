@@ -25,14 +25,15 @@ variables:
   azureContainerRegistry: vaopcontainers.azurecr.io
   phpVersion: 7.2
 
+services:
+  mariadb: mariadb
+  redis: redis
+  
 jobs:
 
 - job: 'PHP'
   pool:
     vmImage: 'Ubuntu-16.04'
-  services:
-  - mariadb: mariadb
-  - redis: redis
 
   steps:
   - script: "export DB_PORT=${agent.services.mariadb.ports.3306}"
