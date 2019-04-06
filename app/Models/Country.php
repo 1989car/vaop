@@ -30,8 +30,8 @@ class Country extends Model
         return $this->belongsTo('App\Models\Continent','continent_id','id');
     }
     
-    function subdivisions()
+    function metroarea()
     {
-        return $this->hasMany('App\Models\Subdivision','country_id','id');
+        return $this->hasMany('App\Models\MetroArea','country_id','id');
     }
 }

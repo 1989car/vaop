@@ -15,13 +15,13 @@ class CreateMetroAreasTable extends Migration
     {
         Schema::create('metro_areas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('subdivision_id');
+            $table->bigInteger('country_id');
             $table->string('name');
-            $table->string('code');
+            $table->boolean('allow_sync')->default(true);
             $table->timestamps();
             $table->softDeletes();
     
-            $table->index('subdivision_id');
+            $table->index('country_id');
             $table->index('code');
         });
     }

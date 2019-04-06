@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
@@ -21,9 +22,14 @@ class MetroArea extends Resource
     public static $model = 'App\Models\MetroArea';
     public static $title = 'name';
     public static $search = [
-        'code',
         'name',
     ];
+    public static $with = ['country'];
+    
+    public function subtitle()
+    {
+        return $this->country->name;
+    }
     
     public static function label() {
         return 'Metro Areas';
@@ -32,17 +38,14 @@ class MetroArea extends Resource
     public function fields(Request $request)
     {
         return [
-            BelongsTo::make('Subdivision')->searchable(),
-            
-            ID::make()->sortable(),
-            
-            Text::make('Code')
-                ->sortable()
-                ->rules('required', 'max:255'),
+            BelongsTo::make('Country')->searchable(),
             
             Text::make('Name')
+                ->help('<span style="color:red;">WARNING: Editing this field may break future synchronizations</span>')
                 ->sortable()
                 ->rules('required', 'max:255'),
+    
+            Boolean::make('Allow Sync', 'allow_sync'),
             
             HasMany::make('Airports'),
         ];
@@ -55,7 +58,10 @@ class MetroArea extends Resource
     
     public function filters(Request $request)
     {
-        return [];
+        return [
+            new Filters\Country(),
+            new Filters\AllowSync(),
+        ];
     }
     
     public function lenses(Request $request)

@@ -25,6 +25,12 @@ class Country extends Resource
         'code',
         'name',
     ];
+    public static $with = ['continent'];
+    
+    public function subtitle()
+    {
+        return $this->continent->name;
+    }
     
     public function fields(Request $request)
     {
@@ -43,7 +49,7 @@ class Country extends Resource
     
             Boolean::make('Allow Sync', 'allow_sync'),
             
-            HasMany::make('Subdivisions'),
+            HasMany::make('MetroArea'),
             
             HasMany::make('AirlineOperators'),
         ];
@@ -56,7 +62,10 @@ class Country extends Resource
     
     public function filters(Request $request)
     {
-        return [];
+        return [
+            new Filters\Continent(),
+            new Filters\AllowSync(),
+        ];
     }
     
     public function lenses(Request $request)

@@ -27,6 +27,8 @@ class Kernel extends ConsoleKernel
         //$schedule->command('inspire')->hourly()->withoutOverlapping()->onOneServer()->runInBackground();
         $schedule->job('App\Jobs\ImportContinents')->withoutOverlapping()->onOneServer()->runInBackground();
         $schedule->job('App\Jobs\ImportCountries')->withoutOverlapping()->onOneServer()->runInBackground();
+        $schedule->job('App\Jobs\ImportMetroAreas')->withoutOverlapping()->onOneServer()->runInBackground();
+        $schedule->job('App\Jobs\ImportAirports')->withoutOverlapping()->onOneServer()->runInBackground();
     }
 
     /**

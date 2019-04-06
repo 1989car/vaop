@@ -15,7 +15,7 @@ class ImportCountries implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
     
-    public $description = "Imports country data from VAOP reference dataset (duplicates are syncronized).";
+    public $description = "Imports Country data from VAOP reference dataset (duplicates are synchronized).";
     public $api_endpoint = "https://reference.vaop.flightsim.aero/geography/countries.json";
 
     /**

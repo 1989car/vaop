@@ -44,13 +44,15 @@ class Continent extends Resource
     }
 
     public function cards(Request $request)
-    {
+{
         return [];
     }
 
     public function filters(Request $request)
     {
-        return [];
+        return [
+            new Filters\AllowSync(),
+        ];
     }
 
     public function lenses(Request $request)

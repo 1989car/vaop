@@ -14,7 +14,7 @@ class ImportContinents implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
     
-    public $description = "Imports continent data from VAOP reference dataset (duplicates are syncronized).";
+    public $description = "Imports Continent data from VAOP reference dataset (duplicates are synchronized).";
     public $api_endpoint = "https://reference.vaop.flightsim.aero/geography/continents.json";
 
     /**

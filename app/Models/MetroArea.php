@@ -10,9 +10,13 @@ class MetroArea extends Model
     use SoftDeletes;
     
     protected $fillable = [
-        'subdivision_id',
-        'code',
+        'country_id',
         'name',
+        'allow_sync',
+    ];
+    
+    protected $casts = [
+        'allow_sync' => 'boolean',
     ];
     
     function airports()
@@ -20,8 +24,8 @@ class MetroArea extends Model
         return $this->hasMany('App\Models\Airport','metroarea_id','id');
     }
     
-    function subdivision()
+    function country()
     {
-        return $this->belongsTo('App\Models\Subdivision','subdivision_id','id');
+        return $this->belongsTo('App\Models\Country','country_id','id');
     }
 }

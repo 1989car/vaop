@@ -17,11 +17,11 @@ class CreateAirportsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('metroarea_id');
             $table->string('name');
-            $table->string('iata',3);
+            $table->string('iata',3)->nullable();
             $table->string('icao',4);
             $table->decimal('latitude', 10, 7);
             $table->decimal('longitude', 10, 7);
-            $table->integer('elevation');
+            $table->integer('elevation')->nullable();
             $table->timestamps();
             $table->softDeletes();
             
