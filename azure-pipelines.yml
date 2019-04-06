@@ -11,11 +11,14 @@ resources:
   - container: mariadb
     image: mariadb:10.2
     ports:
-    - 3306
+    - 3306:3306
+    env:
+    - MYSQL_ROOT_PASSWORD: secret
+    - MYSQL_DATABASE: test
   - container: redis
     image: redis:5
     ports:
-    - 6379
+    - 6379:6379
 
 jobs:
 
@@ -53,7 +56,10 @@ jobs:
     displayName: 'setup .env'
 
   - script: php artisan key:generate
-    displayName: 'generate app key'
+    displayName: 'generate encryption key'
+
+  - script: php artisan migrate --seed
+    displayName: 'database migrations and seeding'
 
   - script: ./vendor/bin/phpunit
     displayName: 'phpunit testing'
