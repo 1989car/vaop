@@ -9,14 +9,14 @@ trigger:
 resources:
   containers:
   - container: mariadb
-    image: mariadb:10.2
+    image: "mariadb:10.2"
     ports:
     - 3306
     env:
     - MYSQL_ROOT_PASSWORD: secret
     - MYSQL_DATABASE: test
   - container: redis
-    image: redis:5
+    image: "redis:5"
     ports:
     - 6379
 
@@ -37,9 +37,9 @@ jobs:
     redis: redis
 
   steps:
-  - script: export DB_PORT=${agent.services.mariadb.ports.3306}
+  - script: "export DB_PORT=${agent.services.mariadb.ports.3306}"
     displayName: 'export DB_PORT'
-  - script: export REDIS_PORT=${agent.services.redis.ports.6379}
+  - script: "export REDIS_PORT=${agent.services.redis.ports.6379}"
     displayName: 'export REDIS_PORT'
 
   - script: |
