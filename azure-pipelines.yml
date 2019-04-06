@@ -5,9 +5,6 @@ trigger:
     - bug/*
     - master
     - staging
-  pr:
-  - master
-  - staging
 
 pool:
   vmImage: 'Ubuntu-16.04'
