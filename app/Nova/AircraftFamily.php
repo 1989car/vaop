@@ -37,7 +37,7 @@ class AircraftFamily extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
     
-            BelongsToMany::make('Aircraft Types', 'AircraftTypes'),
+            BelongsToMany::make('Aircraft Types', 'AircraftTypes')->searchable(),
          ];
     }
     

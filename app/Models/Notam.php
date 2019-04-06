@@ -11,13 +11,13 @@ class Notam extends Model
     
     protected $fillable = [
         'title',
-        'icao',
+        'airport_id',
         'body',
         'active',
     ];
     
     function airport()
     {
-        return $this->belongsTo('App\Models\Airport','icao','icao');
+        return $this->belongsTo('App\Models\Airport','airport_id','id');
     }
 }

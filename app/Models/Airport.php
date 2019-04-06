@@ -36,6 +36,6 @@ class Airport extends Model
     
     function notam()
     {
-        return $this->hasMany('App\Models\Notam','icao','icao');
+        return $this->hasMany('App\Models\Notam','airport_id','id');
     }
 }

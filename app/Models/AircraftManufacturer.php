@@ -10,7 +10,13 @@ class AircraftManufacturer extends Model
     use SoftDeletes;
     
     protected $fillable = [
+        'code',
         'name',
+        'allow_sync',
+    ];
+    
+    protected $casts = [
+        'allow_sync' => 'boolean',
     ];
     
     function aircrafttypes()

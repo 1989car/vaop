@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
@@ -33,9 +34,16 @@ class AircraftManufacturer extends Resource
     public function fields(Request $request)
     {
         return [
+            Text::make('Code')
+                ->help('<span style="color:red;">WARNING: Editing this field may break future synchronizations</span>')
+                ->sortable()
+                ->rules('required', 'max:2'),
+            
             Text::make('Name')
                 ->sortable()
                 ->rules('required', 'max:255'),
+    
+            Boolean::make('Allow Sync', 'allow_sync'),
             
             HasMany::make('Aircraft Types', 'AircraftTypes'),
          ];

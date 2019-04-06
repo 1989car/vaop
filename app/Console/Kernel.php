@@ -29,6 +29,8 @@ class Kernel extends ConsoleKernel
         $schedule->job('App\Jobs\ImportCountries')->withoutOverlapping()->onOneServer()->runInBackground();
         $schedule->job('App\Jobs\ImportMetroAreas')->withoutOverlapping()->onOneServer()->runInBackground();
         $schedule->job('App\Jobs\ImportAirports')->withoutOverlapping()->onOneServer()->runInBackground();
+        $schedule->job('App\Jobs\ImportAircraftManufacturers')->withoutOverlapping()->onOneServer()->runInBackground();
+        $schedule->job('App\Jobs\ImportAircraftTypes')->withoutOverlapping()->onOneServer()->runInBackground();
     }
 
     /**

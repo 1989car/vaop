@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
@@ -23,7 +24,6 @@ class Notam extends Resource
     public static $title = 'title';
     public static $search = [
         'title',
-        'icao',
         'body',
     ];
     
@@ -34,18 +34,24 @@ class Notam extends Resource
     public function fields(Request $request)
     {
         return [
-            BelongsTo::make('Airport')->searchable(),
+            BelongsTo::make('Airport')
+                ->searchable()
+                ->nullable(),
             
             Text::make('Title')
                 ->sortable()
                 ->rules('required', 'max:255'),
             
             Text::make('Code')
-                ->sortable(),
+                ->sortable()
+                ->rules('required', 'max:255'),
             
             Textarea::make('Body')
                 ->sortable()
                 ->rules('required'),
+    
+            Boolean::make('Active')
+                ->sortable(),
         ];
     }
     

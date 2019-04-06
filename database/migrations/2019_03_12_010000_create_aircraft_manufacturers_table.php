@@ -16,8 +16,12 @@ class CreateAircraftManufacturersTable extends Migration
         Schema::create('aircraft_manufacturers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('code');
+            $table->boolean('allow_sync')->default(true);
             $table->timestamps();
             $table->softDeletes();
+            
+            $table->index('code');
         });
     }
 

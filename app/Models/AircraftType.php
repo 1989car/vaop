@@ -16,6 +16,13 @@ class AircraftType extends Model
         'engine_type',
         'engine_count',
         'wtc',
+        'icao',
+        'iata',
+        'allow_sync',
+    ];
+    
+    protected $casts = [
+        'allow_sync' => 'boolean',
     ];
     
     function aircraftfamilies()

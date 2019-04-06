@@ -21,6 +21,9 @@ class CreateAircraftTypesTable extends Migration
             $table->string('engine_type');
             $table->integer('engine_count');
             $table->string('wtc', 1);
+            $table->string('icao',4);
+            $table->string('iata',3)->nullable();
+            $table->boolean('allow_sync')->default(true);
             $table->timestamps();
             $table->softDeletes();
             

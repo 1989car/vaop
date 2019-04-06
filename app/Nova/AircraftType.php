@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
@@ -21,9 +22,11 @@ class AircraftType extends Resource
     public static $subGroup = 'Aircraft';
     
     public static $model = 'App\Models\AircraftType';
-    public static $title = 'name';
+    public static $title = 'model';
     public static $search = [
         'model',
+        'type',
+        'engine_type',
     ];
     
     public static function label() {
@@ -36,6 +39,7 @@ class AircraftType extends Resource
             BelongsTo::make('Aircraft Manufacturer', 'AircraftManufacturer')->searchable(),
             
             Text::make('Model')
+                ->help('<span style="color:red;">WARNING: Editing this field may break future synchronizations</span>')
                 ->sortable()
                 ->rules('required', 'max:255'),
             
@@ -54,8 +58,10 @@ class AircraftType extends Resource
             Text::make('Weight Class', 'wtc')
                 ->sortable()
                 ->rules('required', 'max:1'),
+    
+            Boolean::make('Allow Sync', 'allow_sync'),
             
-            BelongsToMany::make('Aircraft Families', 'AircraftFamilies'),
+            BelongsToMany::make('Aircraft Families', 'AircraftFamilies')->searchable(),
          ];
     }
     

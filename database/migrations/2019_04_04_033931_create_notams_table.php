@@ -16,13 +16,15 @@ class CreateNotamsTable extends Migration
         Schema::create('notams', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->string('icao', 4)->nullable();
+            $table->string('code');
+            $table->bigInteger('airport_id')->nullable();
             $table->longText('body');
             $table->boolean('active');
             $table->timestamps();
             $table->softDeletes();
             
             $table->index('active');
+            $table->index('airport_id');
         });
     }
 
