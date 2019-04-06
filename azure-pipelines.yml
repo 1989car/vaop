@@ -35,6 +35,12 @@ jobs:
   - script: composer install --no-interaction --prefer-dist
     displayName: 'composer install'
 
+  - script: cp .env.testing .env
+    displayName: 'setup .env'
+
+  - script: php artisan key:generate
+    displayName: 'generate app key'
+
   - script: ./vendor/bin/phpunit
     displayName: 'phpunit testing'
 
