@@ -9,6 +9,7 @@ variables:
   imageName: 'vaop:$(build.buildId)'
 
 jobs:
+
 - job: PHP
   steps:
   - script: |
@@ -26,7 +27,6 @@ jobs:
   - script: ./vendor/bin/phpunit
     displayName: 'phpunit testing'
 
-jobs:
 - job: Node JS
   steps:
   - task: NodeTool@0
