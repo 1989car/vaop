@@ -1,5 +1,13 @@
 trigger:
-- master
+  branches:
+    include:
+    - features/*
+    - bug/*
+    - master
+    - staging
+  pr:
+  - master
+  - staging
 
 pool:
   vmImage: 'Ubuntu-16.04'
@@ -10,7 +18,7 @@ variables:
 
 jobs:
 
-- job: PHP
+- job: 'PHP'
   steps:
   - script: |
       sudo update-alternatives --set php /usr/bin/php$(phpVersion)
@@ -27,7 +35,7 @@ jobs:
   - script: ./vendor/bin/phpunit
     displayName: 'phpunit testing'
 
-- job: NodeJS
+- job: 'NodeJS'
   steps:
   - task: NodeTool@0
     inputs:
