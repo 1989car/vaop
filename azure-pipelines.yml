@@ -37,6 +37,11 @@ jobs:
     redis: redis
 
   steps:
+  - script: export DB_PORT=${agent.services.mariadb.ports.3306}
+    displayName: 'export DB_PORT'
+  - script: export REDIS_PORT=${agent.services.redis.ports.6379}
+    displayName: 'export REDIS_PORT'
+    
   - script: |
       sudo update-alternatives --set php /usr/bin/php$(phpVersion)
       sudo update-alternatives --set phar /usr/bin/phar$(phpVersion)
@@ -67,8 +72,6 @@ jobs:
 - job: 'NodeJS'
   pool:
     vmImage: 'Ubuntu-16.04'
-  strategy:
-    maxParallel: 5
 
   steps:
   - task: NodeTool@0
