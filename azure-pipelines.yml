@@ -23,21 +23,23 @@ resources:
 variables:
   azureSubscriptionEndpoint: vaop-arm
   azureContainerRegistry: vaopcontainers.azurecr.io
+  phpVersion: 7.2
 
 jobs:
 
 - job: 'PHP'
   pool:
     vmImage: 'Ubuntu-16.04'
-  strategy:
-    matrix:
-      PHP71:
-        phpVersion: '7.1'
-      PHP72:
-        phpVersion: '7.2'
-    maxParallel: 5
+  services:
+    mariadb: mariadb
+    redis: redis
 
   steps:
+  - script: "export DB_PORT=${agent.services.mariadb.ports.3306}"
+    displayName: 'export DB_PORT'
+  - script: "export REDIS_PORT=${agent.services.redis.ports.6379}"
+    displayName: 'export REDIS_PORT'
+
   - script: |
       sudo update-alternatives --set php /usr/bin/php$(phpVersion)
       sudo update-alternatives --set phar /usr/bin/phar$(phpVersion)
