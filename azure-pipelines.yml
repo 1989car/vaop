@@ -11,14 +11,14 @@ resources:
   - container: mariadb
     image: mariadb:10.2
     ports:
-    - 3306:3306
+    - 3306
     env:
     - MYSQL_ROOT_PASSWORD: secret
     - MYSQL_DATABASE: test
   - container: redis
     image: redis:5
     ports:
-    - 6379:6379
+    - 6379
 
 jobs:
 
@@ -31,7 +31,7 @@ jobs:
         phpVersion: '7.1'
       PHP72:
         phpVersion: '7.2'
-    maxParallel: 2
+    maxParallel: 5
   services:
     mariadb: mariadb
     redis: redis
@@ -67,6 +67,8 @@ jobs:
 - job: 'NodeJS'
   pool:
     vmImage: 'Ubuntu-16.04'
+  strategy:
+    maxParallel: 5
 
   steps:
   - task: NodeTool@0
