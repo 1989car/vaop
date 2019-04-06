@@ -6,15 +6,19 @@ trigger:
     - master
     - staging
 
-variables:
-  phpVersion: 7.2
-  imageName: 'vaop:$(build.buildId)'
-
 jobs:
 
 - job: 'PHP'
   pool:
     vmImage: 'Ubuntu-16.04'
+  strategy:
+    matrix:
+      PHP71:
+        phpVersion: '7.1'
+      PHP72:
+        phpVersion: '7.2'
+    maxParallel: 2
+
   steps:
   - script: |
       sudo update-alternatives --set php /usr/bin/php$(phpVersion)
@@ -24,22 +28,28 @@ jobs:
       sudo update-alternatives --set phar.phar /usr/bin/phar.phar$(phpVersion)
       php -version
     displayName: 'Use PHP version $(phpVersion)'
+
   - script: composer config http-basic.nova.laravel.com $(NOVA_USERNAME) $(NOVA_PASSWORD)
     displayName: 'composer nova authentication'
+
   - script: composer install --no-interaction --prefer-dist
     displayName: 'composer install'
+
   - script: ./vendor/bin/phpunit
     displayName: 'phpunit testing'
 
 - job: 'NodeJS'
   pool:
     vmImage: 'Ubuntu-16.04'
+
   steps:
   - task: NodeTool@0
     inputs:
       versionSpec: '10.x'
     displayName: 'Install Node.js'
+
   - script: npm install
     displayName: 'npm install'
+
   - script: npm run prod
     displayName: 'npm install prod build'
