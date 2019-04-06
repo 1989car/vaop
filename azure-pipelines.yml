@@ -17,5 +17,8 @@ steps:
     php -version
   displayName: 'Use PHP version $(phpVersion)'
 
+- script: composer config http-basic.nova.laravel.com $(NOVA_USERNAME) $(NOVA_PASSWORD)
+  displayName: 'composer nova authentication'
+
 - script: composer install --no-interaction --prefer-dist
   displayName: 'composer install'
