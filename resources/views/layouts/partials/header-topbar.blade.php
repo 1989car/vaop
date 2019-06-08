@@ -21,6 +21,7 @@
         </div>
     </div>
 
+    @if(auth()->check())
     <!--begin: Notifications -->
     <div class="kt-header__topbar-item dropdown">
         <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px,0px">
@@ -312,4 +313,5 @@
             </div>
         </div>
     </div>
+    @endif
 </div>

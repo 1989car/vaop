@@ -41,6 +41,16 @@ class User extends Authenticatable implements BannableContract
         return $this->belongsToMany('App\Models\Badge', 'user_badges','user_id','badge_id');
     }
     
+    function reservations()
+    {
+        return $this->hasMany('App\Models\Reservation','user_id','id');
+    }
+    
+    function nextFlight()
+    {
+        return $this->hasMany('App\Models\Reservation','user_id','id')->orderBy('planned_departure','ASC')->first();
+    }
+    
     public function canImpersonate()
     {
         return auth()->user()->can('user:impersonate');

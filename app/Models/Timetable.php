@@ -41,4 +41,9 @@ class Timetable extends Model
     {
         return $this->belongsTo('App\Models\CityPair','citypair_id','id');
     }
+    
+    function reservations()
+    {
+        return $this->hasMany('App\Models\Reservation', 'timetable_id', 'id');
+    }
 }

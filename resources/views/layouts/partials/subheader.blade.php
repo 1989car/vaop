@@ -1,7 +1,7 @@
 <div class="kt-subheader   kt-grid__item" id="kt_subheader">
     <div class="kt-subheader__main">
-        <h3 class="kt-subheader__title">Dashboard</h3>
-        <h4 class="kt-subheader__desc">Some stuff</h4>
+        <h3 class="kt-subheader__title">@yield('title')</h3>
+        <h4 class="kt-subheader__desc">@yield('subtitle')</h4>
     </div>
     <!--
     <div class="kt-subheader__toolbar">

@@ -27,6 +27,7 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Country' => 'App\Policies\CountryPolicy',
         'App\Models\MetroArea' => 'App\Policies\MetroAreaPolicy',
         'App\Models\Notam' => 'App\Policies\NotamPolicy',
+        'App\Models\Reservation' => 'App\Policies\ReservationPolicy',
         'Spatie\Permission\Models\Role' => 'App\Policies\RolePolicy',
         'Spatie\Permission\Models\Permission' => 'App\Policies\PermissionPolicy',
         'App\Models\Subdivision' => 'App\Policies\SubdivisionPolicy',

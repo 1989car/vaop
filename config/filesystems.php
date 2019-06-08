@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('FILESYSTEM_DRIVER', 'local'),
+    'default' => env('FILESYSTEM_DRIVER', 'uploads'),
 
     /*
     |--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'cloud' => env('FILESYSTEM_CLOUD', 'azure'),
+    'cloud' => env('FILESYSTEM_CLOUD', 'uploads'),
 
     /*
     |--------------------------------------------------------------------------
@@ -69,6 +69,7 @@ return [
             'name'      => 'vaopuploads',
             'key'       => env('AZURE_STORAGE_KEY'),
             'container' => env('AZURE_STORAGE_CONTAINER'),
+            'url'       => env('UPLOADS_BASE_URL'),
         ],
 
     ],

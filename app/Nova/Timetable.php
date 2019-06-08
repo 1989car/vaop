@@ -7,6 +7,7 @@ use Fourstacks\NovaCheckboxes\Checkboxes;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Number;
@@ -67,6 +68,8 @@ class Timetable extends Resource
                 ->format('HH:mm')
                 ->help('All times should be in UTC (GMT+0)')
                 ->sortable(),
+    
+            HasMany::make('Reservations'),
         ];
     }
     

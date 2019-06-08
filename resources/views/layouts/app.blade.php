@@ -29,11 +29,11 @@
 
     @yield('stylesheets')
 
-    <link rel="shortcut icon" href="{{ env('UPLOADS_BASE_URL').GlobalSettings::get('favicon') }}" />
+    <link rel="shortcut icon" href="{{ Storage::url(GlobalSettings::get('favicon')) }}" />
 </head>
 
 @if(GlobalSettings::has('header-background-image') && GlobalSettings::get('header-background-image') !== '')
-    <body style="background-image: url({{ env('UPLOADS_BASE_URL').GlobalSettings::get('header-background-image') }}); background-position: center top; background-size: 100% 350px;" class="kt-page--loading-enabled kt-page--loading kt-page--fixed kt-header--fixed kt-header--minimize-menu kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent kt-page--loading">
+    <body style="background-image: url({{ Storage::url(GlobalSettings::get('header-background-image')) }}); background-position: center top; background-size: 100% 350px;" class="kt-page--loading-enabled kt-page--loading kt-page--fixed kt-header--fixed kt-header--minimize-menu kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent kt-page--loading">
 @else
     <body style="background-image: url('/images/default-header-background.png'); background-position: center top; background-size: 100% 350px;" class="kt-page--loading-enabled kt-page--loading kt-page--fixed kt-header--fixed kt-header--minimize-menu kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent kt-page--loading">
 @endif
@@ -41,7 +41,7 @@
     <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
         <div class="kt-header-mobile__logo">
             <a href="{{ route('dashboard') }}">
-                <img alt="Logo" src="{{ env('UPLOADS_BASE_URL').GlobalSettings::get('logo-small-light') }}" height="60px" />
+                <img alt="Logo" src="{{ Storage::url(GlobalSettings::get('logo-small-light')) }}" height="60px" />
             </a>
         </div>
         <div class="kt-header-mobile__toolbar">
@@ -59,8 +59,8 @@
 
                         <div class="kt-header__brand   kt-grid__item" id="kt_header_brand">
                             <a class="kt-header__brand-logo" href="{{ route('dashboard') }}">
-                                <img alt="Logo" src="{{ env('UPLOADS_BASE_URL').GlobalSettings::get('logo-full-dark') }}" class="kt-header__brand-logo-default" height="60px" />
-                                <img alt="Logo" src="{{ env('UPLOADS_BASE_URL').GlobalSettings::get('logo-small-dark') }}" class="kt-header__brand-logo-sticky" height="60px" />
+                                <img alt="Logo" src="{{ Storage::url(GlobalSettings::get('logo-full-dark')) }}" class="kt-header__brand-logo-default" height="60px" />
+                                <img alt="Logo" src="{{ Storage::url(GlobalSettings::get('logo-small-dark')) }}" class="kt-header__brand-logo-sticky" height="60px" />
                             </a>
                         </div>
 
