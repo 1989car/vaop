@@ -23,6 +23,17 @@ class GlobalSettingsDefaultSeed extends Seeder
             'logo-small-light' => '',
             'site-title' => '',
             'copyright-block' => '',
+            'registration' => 'closed',
+            'external-background-image' => '',
+            'login-block-title' => '',
+            'login-block-description' => '',
+            'color-brand' => '#5867dd',
+            'color-primary' => '#5867dd',
+            'color-primary-hover' => '#384ad7',
+            'color-success' => '#d4edda',
+            'color-info' => '#d1ecf1',
+            'color-warning' => '#fff3cd',
+            'color-danger' => '#f8d7da',
         ];
         
         foreach($default_settings as $name => $value){

@@ -11,9 +11,7 @@
                     </div>
                 </div>
                 <div class="kt-footer__menu">
-                    <a href="#" target="_blank">Disclaimer</a>
-                    <a href="#" target="_blank">Privacy Policy</a>
-                    <a href="#" target="_blank">Terms of Service</a>
+                    @include('layouts.partials.legal-footer-menu')
                 </div>
             </div>
         </div>
