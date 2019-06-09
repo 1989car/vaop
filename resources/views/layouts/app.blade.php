@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 @include('layouts.partials.head')
 
-@if(GlobalSettings::has('header-background-image') && GlobalSettings::get('header-background-image') !== '')
+@if(GlobalSettings::get('header-background-image') !== '')
     <body style="background-image: url({{ Storage::url(GlobalSettings::get('header-background-image')) }}); background-position: center top; background-size: 100% 350px;" class="kt-page--loading-enabled kt-page--loading kt-page--fixed kt-header--fixed kt-header--minimize-menu kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent kt-page--loading">
 @else
     <body style="background-image: url('https://vaopassets.blob.core.windows.net/images/default/header-background.png'); background-position: center top; background-size: 100% 350px;" class="kt-page--loading-enabled kt-page--loading kt-page--fixed kt-header--fixed kt-header--minimize-menu kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent kt-page--loading">

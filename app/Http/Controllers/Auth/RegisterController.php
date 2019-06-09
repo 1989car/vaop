@@ -4,9 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use Clarkeash\Doorman\Exceptions\DoormanException;
+use Clarkeash\Doorman\Facades\Doorman;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Junaidnasir\GlobalSettings\Facades\GlobalSettings;
 
 class RegisterController extends Controller
 {
@@ -28,7 +32,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -38,6 +42,75 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+    
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        switch(GlobalSettings::get('registration')) {
+            case 'closed':
+                return view('auth.register.closed');
+            case 'invite-email':
+            case 'invite-code':
+                if (session('invite_code_valid')){
+                    return view('auth.register.invite');
+                }else{
+                    return view('auth.register.invite-validate');
+                }
+            case 'open':
+            default:
+                return view('auth.register.open');
+        }
+    }
+    
+    /**
+     * Handle a registration request for the application.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function register()
+    {
+        if(substr(GlobalSettings::get('registration'),0,6) == 'invite'){
+            if(session('invite_code_valid') !== true) {
+                if (GlobalSettings::get('registration') == 'invite-email') {
+                    $result = Doorman::check(request()->input('invite_code'), request()->input('email'));
+                } else {
+                    $result = Doorman::check(request()->input('invite_code'));
+                }
+                if ($result) {
+                    // Valid Invite Code
+                    session(['invite_code_valid' => true]);
+                    session(['invite_code' => request()->input('invite_code')]);
+        
+                    // If Email Present
+                    if (request()->input('email') !== '') {
+                        session(['invite_code_email' => request()->input('email')]);
+                    }
+                    return redirect('/register');
+                } else {
+                    return redirect('/register')->withErrors(['The invite code entered is not valid.']);
+                }
+            }else{
+                try {
+                    Doorman::redeem(session('invite_code'), request()->get('email'));
+                } catch (DoormanException $e) {
+                    return redirect('/register')->withErrors([$e->getMessage()]);
+                }
+            }
+        }
+        
+        $this->validator(request()->all())->validate();
+        
+        event(new Registered($user = $this->create(request()->all())));
+        
+        $this->guard()->login($user);
+        
+        return $this->registered(request(), $user)
+            ?: redirect($this->redirectPath());
     }
 
     /**

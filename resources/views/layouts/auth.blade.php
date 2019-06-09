@@ -10,25 +10,18 @@
 <div class="kt-grid kt-grid--ver kt-grid--root kt-page">
     <div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v1" id="kt_login">
         <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--desktop kt-grid--ver-desktop kt-grid--hor-tablet-and-mobile">
-            @if(GlobalSettings::has('header-background-image') && GlobalSettings::get('header-background-image') !== '')
+            @if(GlobalSettings::get('external-background-image') !== '')
                 <div class="kt-grid__item kt-grid__item--order-tablet-and-mobile-2 kt-grid kt-grid--hor kt-login__aside" style="background-image: url({{ Storage::url(GlobalSettings::get('external-background-image')) }}); background-position: center top;">
             @else
                 <div class="kt-grid__item kt-grid__item--order-tablet-and-mobile-2 kt-grid kt-grid--hor kt-login__aside" style="background-image: url(https://vaopassets.blob.core.windows.net/images/default/external-background.png); background-position: center top;">
             @endif
                 <div class="kt-grid__item">
                     <a href="{{ route('dashboard') }}" class="kt-login__logo">
-                        <img alt="Logo" src="{{ env('UPLOADS_BASE_URL').GlobalSettings::get('logo-small-dark') }}">
+                        <img alt="Logo" src="{{ env('UPLOADS_BASE_URL').GlobalSettings::get('logo-small-dark') }}" style="max-width: 100%;">
                     </a>
                 </div>
                 <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver">
-                    <div class="kt-grid__item kt-grid__item--middle">
-                        @if(GlobalSettings::has('login-block-title') && GlobalSettings::get('login-block-title') !== '')
-                        <h3 class="kt-login__title">{{ GlobalSettings::get('login-block-title') }}</h3>
-                        @endif
-                        @if(GlobalSettings::has('login-block-title') && GlobalSettings::get('login-block-description') !== '')
-                        <h4 class="kt-login__subtitle">{{ GlobalSettings::get('login-block-description') }}</h4>
-                            @endif
-                    </div>
+                    @yield('sideblock')
                 </div>
                 <div class="kt-grid__item">
                     <div class="kt-login__info" style="font-size:11px;">

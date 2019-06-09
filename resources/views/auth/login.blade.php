@@ -1,8 +1,19 @@
 @extends('layouts.auth')
 
+@section('sideblock')
+    <div class="kt-grid__item kt-grid__item--middle">
+        @if(GlobalSettings::get('login-block-title') !== '')
+            <h3 class="kt-login__title">{{ GlobalSettings::get('login-block-title') }}</h3>
+        @endif
+        @if(GlobalSettings::get('login-block-description') !== '')
+            <h4 class="kt-login__subtitle">{{ GlobalSettings::get('login-block-description') }}</h4>
+        @endif
+    </div>
+@endsection
+
 @section('content')
 <div class="kt-grid__item kt-grid__item--fluid  kt-grid__item--order-tablet-and-mobile-1  kt-login__wrapper">
-    @if(GlobalSettings::has('registration') && GlobalSettings::get('registration') !== 'closed')
+    @if(GlobalSettings::get('registration') !== 'closed')
     <div class="kt-login__head">
         <span class="kt-login__signup-label">Don't have an account yet?</span>&nbsp;&nbsp;
         <a href="{{ route('register') }}" class="kt-link kt-login__signup-link">Sign Up!</a>
@@ -13,7 +24,7 @@
 
         <div class="kt-login__form">
             <div class="kt-login__title">
-                <h3>Sign In</h3>
+                <h3>Login</h3>
             </div>
 
             <form class="kt-form" action="{{ route('login') }}" method="POST" novalidate="novalidate">
@@ -39,16 +50,18 @@
                     @endif
                 </div>
 
-                @if (Route::has('password.request'))
                 <div class="kt-login__actions">
-                    <a href="{{ route('password.request') }}" class="kt-link kt-login__link-forgot">
-                        Forgot Your Password ?
-                    </a>
+                    @if (Route::has('password.request'))
+                        <a href="{{ route('password.request') }}" class="kt-link kt-login__link-forgot">
+                            Forgot Your Password ?
+                        </a>
+                    @else
+                        <a href="#" class="kt-link kt-login__link-forgot"></a>
+                    @endif
                     <button id="kt_login_signin_submit"
-                            class="btn btn-primary btn-elevate kt-login__btn-primary" type="submit">Sign In
+                            class="btn btn-primary btn-elevate kt-login__btn-primary" type="submit">Login
                     </button>
                 </div>
-                @endif
             </form>
         </div>
     </div>

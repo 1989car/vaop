@@ -12,6 +12,7 @@
         "alexpgates/horizon-link": "^0.0.3",
         "bensampo/laravel-enum": "^1.17",
         "chris-ware/nova-breadcrumbs": "^0.7.0",
+        "clarkeash/doorman": "^2.1",
         "ctessier/nova-advanced-image-field": "^1.0",
         "cybercog/laravel-nova-ban": "^1.1",
         "fideloper/proxy": "^4.0",

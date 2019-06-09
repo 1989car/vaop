@@ -34,6 +34,11 @@ class GlobalSettingsDefaultSeed extends Seeder
             'color-info' => '#d1ecf1',
             'color-warning' => '#fff3cd',
             'color-danger' => '#f8d7da',
+            'disable-search' => 'false',
+            'register-block-title' => '',
+            'register-block-description' => '',
+            'registration-closed-message' => '',
+            'registration-invite-message' => '',
         ];
         
         foreach($default_settings as $name => $value){
