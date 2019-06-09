@@ -26,14 +26,16 @@ class GlobalSettingsDefaultSeed extends Seeder
         ];
         
         foreach($default_settings as $name => $value){
-            $setting = \Junaidnasir\GlobalSettings\Models\GlobalSettingsModel::where('name','=',$name)->get();
+            $setting = \Junaidnasir\GlobalSettings\Models\GlobalSettingsModel::where('name','=',$name)->first();
             if($setting == null){
-                \Junaidnasir\GlobalSettings\Models\GlobalSettingsModel::upateOrCreate(
+                \Junaidnasir\GlobalSettings\Models\GlobalSettingsModel::updateOrCreate(
                     [
-                        'name' => $value,
+                        'name' => $name,
+                        'value' => $value,
                     ],
                     [
-                        'name' => $value,
+                        'name' => $name,
+                        'value' => $value,
                     ]
                 );
             }
