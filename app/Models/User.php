@@ -22,6 +22,7 @@ class User extends Authenticatable implements BannableContract, MustVerifyEmail
         'password',
         'avatar_url',
         'is_staff',
+        'status',
     ];
 
     protected $hidden = [
