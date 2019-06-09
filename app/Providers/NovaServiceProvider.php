@@ -78,6 +78,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             \Llaski\NovaScheduledJobs\NovaScheduledJobsTool::make(),
             \Alexpgates\HorizonLink\HorizonLink::make(),
             \ChrisWare\NovaBreadcrumbs\NovaBreadcrumbs::make(),
+            \Infinety\MenuBuilder\MenuBuilder::make(),
         ];
     }
 

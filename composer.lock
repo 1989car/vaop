@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "813e43218a9c68ea13de92da86b39014",
+    "content-hash": "382f5f9cf1ccc363871a9a98dacbc943",
     "packages": [
         {
             "name": "alexpgates/horizon-link",
@@ -259,6 +259,66 @@
                 }
             ],
             "time": "2018-10-14T19:02:29+00:00"
+        },
+        {
+            "name": "cmgmyr/messenger",
+            "version": "2.17",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cmgmyr/laravel-messenger.git",
+                "reference": "2131acf5e69688c340cfb9ef5ff7917eb54516b4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cmgmyr/laravel-messenger/zipball/2131acf5e69688c340cfb9ef5ff7917eb54516b4",
+                "reference": "2131acf5e69688c340cfb9ef5ff7917eb54516b4",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/config": ">=5.5 <6.0",
+                "illuminate/database": ">=5.5 <6.0",
+                "illuminate/support": ">=5.5 <6.0",
+                "php": "^7.1.3"
+            },
+            "require-dev": {
+                "adamwathan/faktory": "0.3.*",
+                "friendsofphp/php-cs-fixer": "^2.5",
+                "orchestra/testbench": "~3.0",
+                "phpunit/phpunit": "^7.0|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Cmgmyr\\Messenger\\MessengerServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Cmgmyr\\Messenger\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Gmyr",
+                    "email": "cmgmyr@gmail.com",
+                    "homepage": "https://github.com/cmgmyr",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Simple user messaging tool for Laravel",
+            "keywords": [
+                "Messenger",
+                "laravel",
+                "messaging",
+                "user messaging"
+            ],
+            "time": "2019-03-10T19:00:53+00:00"
         },
         {
             "name": "ctessier/nova-advanced-image-field",
@@ -2101,6 +2161,65 @@
                 "zformat"
             ],
             "time": "2017-01-10T10:39:54+00:00"
+        },
+        {
+            "name": "infinety-es/nova-menu-builder",
+            "version": "v1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/InfinetyEs/Nova-Menu-Builder.git",
+                "reference": "8a652e7d4b1686f3246f800529d44f4352af3c32"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/InfinetyEs/Nova-Menu-Builder/zipball/8a652e7d4b1686f3246f800529d44f4352af3c32",
+                "reference": "8a652e7d4b1686f3246f800529d44f4352af3c32",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Infinety\\MenuBuilder\\MenuBuilderServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Infinety\\MenuBuilder\\": "src/"
+                },
+                "files": [
+                    "src/Http/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eric Lagarda",
+                    "email": "eric@infinety.es",
+                    "role": "Developer"
+                },
+                {
+                    "name": "InfinetyEs",
+                    "email": "apps@infinety.es",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Menu Builder Tool for Laravel Nova.",
+            "keywords": [
+                "builder",
+                "infinety",
+                "laravel",
+                "menu",
+                "nova"
+            ],
+            "time": "2019-04-19T16:05:48+00:00"
         },
         {
             "name": "intervention/image",

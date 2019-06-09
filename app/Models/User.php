@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Cmgmyr\Messenger\Traits\Messagable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -13,13 +14,14 @@ use Cog\Laravel\Ban\Traits\Bannable;
 
 class User extends Authenticatable implements BannableContract, MustVerifyEmail
 {
-    use Notifiable, SoftDeletes, HasRoles, Bannable, HasApiTokens;
+    use Notifiable, SoftDeletes, HasRoles, Bannable, HasApiTokens, Messagable;
 
     protected $fillable = [
         'name',
         'email',
         'password',
         'avatar_url',
+        'is_staff',
     ];
 
     protected $hidden = [
@@ -30,6 +32,15 @@ class User extends Authenticatable implements BannableContract, MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    function getAvatarURLAttribute($value)
+    {
+        if($value !== null){
+            return env('UPLOADS_BASE_URL').$value;
+        }else{
+            return "https://www.gravatar.com/avatar/".md5($this->email)."?s=60";
+        }
+    }
     
     function achievements()
     {
