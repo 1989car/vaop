@@ -22,7 +22,6 @@ class CreateMetroAreasTable extends Migration
             $table->softDeletes();
     
             $table->index('country_id');
-            $table->index('code');
         });
     }
 
