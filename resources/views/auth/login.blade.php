@@ -1,5 +1,7 @@
 @extends('layouts.auth')
 
+@section('title','Login')
+
 @section('sideblock')
     <div class="kt-grid__item kt-grid__item--middle">
         @if(GlobalSettings::get('login-block-title') !== '')

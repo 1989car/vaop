@@ -1,5 +1,7 @@
 @extends('layouts.auth')
 
+@section('title','Registration Closed')
+
 @section('sideblock')
     <div class="kt-grid__item kt-grid__item--middle">
         @if(GlobalSettings::get('register-block-title') !== '')
