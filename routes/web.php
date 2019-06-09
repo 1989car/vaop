@@ -25,5 +25,10 @@ Route::middleware(['auth','verified'])->group(function () {
         Route::post('/thread/{id}', 'MessageController@update')->name('messages.update');
     });
     
+    Route::namespace('Account')->prefix('account')->group(function() {
+        Route::get('/settings', 'SettingsController@index')->name('account.settings');
+    });
+    
+    // Utility Endpoints
     Route::post('/notifications/markallread','NotificationController@markallread')->name('notifications.markallread');
 });

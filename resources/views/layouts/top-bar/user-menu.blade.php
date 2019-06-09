@@ -19,6 +19,7 @@
         </div>
 
         <div class="kt-notification">
+            <!-- TODO: Add profile page -->
             <a href="#" class="kt-notification__item">
                 <div class="kt-notification__item-icon">
                     <i class="flaticon2-calendar-3 kt-font-success"></i>
@@ -28,7 +29,7 @@
                         My Profile
                     </div>
                     <div class="kt-notification__item-time">
-                        Account settings and more
+                        Profile summary and more
                     </div>
                 </div>
             </a>
@@ -42,6 +43,20 @@
                     </div>
                     <div class="kt-notification__item-time">
                         Inbox and messages
+                    </div>
+                </div>
+            </a>
+            <!-- TODO: Add account settings -->
+            <a href="{{ route('account.settings') }}" class="kt-notification__item">
+                <div class="kt-notification__item-icon">
+                    <i class="flaticon2-gear"></i>
+                </div>
+                <div class="kt-notification__item-details">
+                    <div class="kt-notification__item-title kt-font-bold">
+                        My Settings
+                    </div>
+                    <div class="kt-notification__item-time">
+                        Account settings and options
                     </div>
                 </div>
             </a>
