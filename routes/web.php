@@ -24,4 +24,6 @@ Route::middleware(['auth','verified'])->group(function () {
         Route::get('/thread/{id}', 'MessageController@thread')->name('messages.thread');
         Route::post('/thread/{id}', 'MessageController@update')->name('messages.update');
     });
+    
+    Route::post('/notifications/markallread','NotificationController@markallread')->name('notifications.markallread');
 });
