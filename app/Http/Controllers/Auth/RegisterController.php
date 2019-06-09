@@ -108,6 +108,8 @@ class RegisterController extends Controller
         event(new Registered($user = $this->create(request()->all())));
         
         $this->guard()->login($user);
+    
+        session()->forget(['invite_code_valid','invite_code','invite_code_email']);
         
         return $this->registered(request(), $user)
             ?: redirect($this->redirectPath());

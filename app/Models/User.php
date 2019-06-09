@@ -11,7 +11,7 @@ use Spatie\Permission\Traits\HasRoles;
 use Cog\Contracts\Ban\Bannable as BannableContract;
 use Cog\Laravel\Ban\Traits\Bannable;
 
-class User extends Authenticatable implements BannableContract
+class User extends Authenticatable implements BannableContract, MustVerifyEmail
 {
     use Notifiable, SoftDeletes, HasRoles, Bannable, HasApiTokens;
 
