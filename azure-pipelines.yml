@@ -22,7 +22,7 @@ resources:
 
 variables:
   azureSubscriptionEndpoint: vaop-arm
-  azureContainerRegistry: vaopcontainers.azurecr.io
+  azureContainerRegistry: vaopcr.azurecr.io
   phpVersion: 7.2
 
 jobs:
@@ -47,7 +47,6 @@ jobs:
       sudo update-alternatives --set php-cgi /usr/bin/php-cgi$(phpVersion)
       sudo update-alternatives --set phar.phar /usr/bin/phar.phar$(phpVersion)
       php -version
-    displayName: 'Use PHP version $(phpVersion)'
 
   - script: composer config http-basic.nova.laravel.com $(NOVA_USERNAME) $(NOVA_PASSWORD)
     displayName: 'composer nova authentication'
