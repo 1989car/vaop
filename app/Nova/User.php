@@ -54,6 +54,9 @@ class User extends Resource
                 ->onlyOnForms()
                 ->creationRules('required', 'string', 'min:6')
                 ->updateRules('nullable', 'string', 'min:6'),
+            
+            // TODO: Add `is_staff` field management
+            // TODO: Add `status` field management
     
             Impersonate::make($this),
     

@@ -8,13 +8,8 @@
         <div class="kt-portlet__head-toolbar">
             <ul class="nav nav-pills nav-pills-sm nav-pills-label nav-pills-bold" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#kt_widget31_tab1_content" role="tab">
-                        Today
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#kt_widget31_tab2_content" role="tab">
-                        Week
+                    <a class="btn btn-primary" href="#">
+                        Reserve New Flight
                     </a>
                 </li>
             </ul>

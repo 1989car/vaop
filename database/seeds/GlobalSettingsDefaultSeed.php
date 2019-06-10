@@ -39,6 +39,7 @@ class GlobalSettingsDefaultSeed extends Seeder
             'register-block-description' => '',
             'registration-closed-message' => '',
             'registration-invite-message' => '',
+            'allow-user-to-user-messaging' => '1',
         ];
         
         foreach($default_settings as $name => $value){

@@ -6,7 +6,7 @@
             </h3>
         </div>
         <div class="kt-portlet__head-toolbar">
-            <a href="#" class="btn btn-label-brand btn-sm  btn-bold">
+            <a href="#" class="btn btn-primary">
                 Fly Now
             </a>
         </div>

@@ -10,6 +10,7 @@ use Cmgmyr\Messenger\Models\Participant;
 use Cmgmyr\Messenger\Models\Thread;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Session;
+use Junaidnasir\GlobalSettings\Facades\GlobalSettings;
 
 class MessageController extends Controller
 {
@@ -29,10 +30,16 @@ class MessageController extends Controller
     {
         // All threads that user is participating in
         $threads = Thread::forUser(auth()->user()->id)->latest('updated_at')->get();
+        
+        if(GlobalSettings::get('allow-user-to-user-messaging') == '1'){
+            $users = User::where('id','!=',auth()->user()->id)->orderBy('name')->get();
+        }else{
+            $users = User::where('id','!=',auth()->user()->id)->orderBy('name')->where('is_staff','=','1')->get();
+        }
 
         return view('messages.start', [
             'threads' => $threads,
-            'users' => User::where('id','!=',auth()->user()->id)->orderBy('name')->get(),
+            'users' => $users,
         ]);
     }
     
