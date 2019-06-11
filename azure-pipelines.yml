@@ -47,6 +47,7 @@ jobs:
       sudo update-alternatives --set php-cgi /usr/bin/php-cgi$(phpVersion)
       sudo update-alternatives --set phar.phar /usr/bin/phar.phar$(phpVersion)
       php -version
+    displayName: 'Use PHP version $(phpVersion)'
 
   - script: composer config http-basic.nova.laravel.com $(NOVA_USERNAME) $(NOVA_PASSWORD)
     displayName: 'composer nova authentication'
@@ -107,11 +108,11 @@ jobs:
       azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
       azureContainerRegistry: $(azureContainerRegistry)
       imageName: $(azureContainerRegistry)/$(Build.Repository.Name):latest
-      arguments: $(azureContainerRegistry)/$(Build.Repository.Name):$(Build.BuildId)
+      arguments: $(azureContainerRegistry)/$(Build.Repository.Name):$(Build.BuildNumber)
   - task: Docker@1
     displayName: Push image
     inputs:
       command: push
       azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
       azureContainerRegistry: $(azureContainerRegistry)
-      imageName: $(Build.Repository.Name):$(Build.BuildId)
+      imageName: $(Build.Repository.Name):$(Build.BuildNumber)

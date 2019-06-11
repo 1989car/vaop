@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: vaop
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: vaop
+    spec:
+      containers:
+        - name: nginx
+          image: nginx/nginx:alpine
+          ports:
+            - containerPort: 80
+              protocol: TCP
+        - name: redis
+          image: redis/nginx:5.0.5
+          ports:
+            - containerPort: 6379
+              protocol: TCP
