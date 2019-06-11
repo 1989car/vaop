@@ -116,7 +116,8 @@ jobs:
       azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
       azureContainerRegistry: $(azureContainerRegistry)
       imageName: $(Build.Repository.Name):$(Build.BuildNumber)
-  - task: PublishPipelineArtifact@0
+  - task: PublishBuildArtifacts@1
     inputs:
-      artifactName: '_kubernetes_manifest'
-      targetPath: 'kubernetes.yaml'
+      PathtoPublish: 'kubernetes.yaml'
+      ArtifactName: '_kubernetes_manifest'
+      publishLocation: 'Container'
