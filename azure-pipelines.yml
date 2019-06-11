@@ -35,9 +35,9 @@ jobs:
     redis: redis
 
   steps:
-  - script: "export DB_PORT=${agent.services.mariadb.ports.3306}"
+  - script: "export DB_PORT=${AGENT_SERVICES_MARIADB_PORTS_3306}"
     displayName: 'export DB_PORT'
-  - script: "export REDIS_PORT=${agent.services.redis.ports.6379}"
+  - script: "export REDIS_PORT=${AGENT_SERVICES_REDIS_PORTS_6379}"
     displayName: 'export REDIS_PORT'
 
   - script: |
