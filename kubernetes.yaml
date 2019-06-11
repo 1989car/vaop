@@ -10,6 +10,11 @@ spec:
         app: vaop
     spec:
       containers:
+        - name: laravel
+          image: vaopcr.azurecr.io/atgi/vaop:20190611.1
+          ports:
+            - containerPort: 9000
+              protocol: TCP
         - name: nginx
           image: nginx/nginx:alpine
           ports:
@@ -20,3 +25,17 @@ spec:
           ports:
             - containerPort: 6379
               protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vaop-ingress
+  labels:
+    app: vaop-ingress
+spec:
+  selector:
+    app: vaop
+  ports:
+    - port: 80
+      protocol: TCP
+  type: LoadBalancer
